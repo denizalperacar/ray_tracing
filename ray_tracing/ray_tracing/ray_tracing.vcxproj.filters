@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="render">
+      <UniqueIdentifier>{7d58931d-c94e-442b-8ade-5f6ed67d226d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{b16892b2-7ed2-4bd3-9621-48f660dd1555}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vector3">
+      <UniqueIdentifier>{cc01bd44-c67f-4bb9-b3ec-f53f2c8fd0df}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="rendering.h">
+      <Filter>render</Filter>
+    </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="vec3.h">
+      <Filter>vector3</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="rendering.cpp">
+      <Filter>render</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+</Project>

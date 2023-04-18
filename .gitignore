@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+ray_tracing/.vs/ray_tracing/v17/Browse.VC.opendb
+ray_tracing/.vs/ray_tracing/v17/Browse.VC.db-wal
+ray_tracing/.vs/ray_tracing/v17/Browse.VC.db-shm
+ray_tracing/.vs/ray_tracing/v17/Browse.VC.db
