@@ -28,7 +28,7 @@ public:
 		}
 	}
 
-	vec3(T e1, T e2, T e3) : e{ e1, e2, e3 } {}
+	explicit vec3(T e1, T e2, T e3) : e{ e1, e2, e3 } {}
 
 	double x() const { return e[0]; }
 	double y() const { return e[1]; }
@@ -65,71 +65,111 @@ public:
 	}
 
 public:
-	array<T, 3> e;
+	std::array<T, 3> e;
 };
 
+using vec3f = vec3<float>;
+using vec3d = vec3<double>;
 using point3d = vec3<double>;
 using point3f = vec3<float>;
 using color3d = vec3<double>;
 using color3f = vec3<float>;
 template <typename T> using color = vec3<T>;
+template <typename T> using point = vec3<T>;
 
 
-// vec3 utility functions
+// vec3 utility functions for float
 
-template <typename T>
-inline std::ostream& operator<<(std::ostream& out, const vec3<T>& v) {
+inline std::ostream& operator<<(std::ostream& out, const vec3f& v) {
 	return out << v.e[0] << ' ' << v.e[1] << ' ' << v.e[2];
 }
 
-template <typename T>
-inline vec3<T> operator+(const vec3<T>& u, const vec3<T>& v) {
-	return vec3(u.e[0] + v.e[0], u.e[1] + v.e[1], u.e[2] + v.e[2]);
+inline vec3f operator+(const vec3f& u, const vec3f& v) {
+	return vec3f(u.e[0] + v.e[0], u.e[1] + v.e[1], u.e[2] + v.e[2]);
 }
 
-template <typename T>
-inline vec3<T> operator-(const vec3<T>& u, const vec3<T>& v) {
-	return vec3(u.e[0] - v.e[0], u.e[1] - v.e[1], u.e[2] - v.e[2]);
+inline vec3f operator-(const vec3f& u, const vec3f& v) {
+	return vec3f(u.e[0] - v.e[0], u.e[1] - v.e[1], u.e[2] - v.e[2]);
 }
 
-template <typename T>
-inline vec3<T> operator*(const vec3<T>& u, const vec3<T>& v) {
-	return vec3(u.e[0] * v.e[0], u.e[1] * v.e[1], u.e[2] * v.e[2]);
+inline vec3f operator*(const vec3f& u, const vec3f& v) {
+	return vec3f(u.e[0] * v.e[0], u.e[1] * v.e[1], u.e[2] * v.e[2]);
 }
 
-template <typename T>
-inline vec3<T> operator*(double t, const vec3<T>& v) {
-	return vec3<T>(t * v.e[0], t * v.e[1], t * v.e[2]);
+inline vec3f operator*(float t, const vec3f& v) {
+	return vec3f(t * v.e[0], t * v.e[1], t * v.e[2]);
 }
 
-template <typename T>
-inline vec3<T> operator*(const vec3<T>& v, double t) {
+inline vec3f operator*(const vec3f& v, float t) {
 	return t * v;
 }
 
-template <typename T>
-inline vec3<T> operator/(vec3<T> v, double t) {
+inline vec3f operator/(vec3f v, float t) {
 	return (1 / t) * v;
 }
 
-template <typename T>
-inline double dot(const vec3<T>& u, const vec3<T>& v) {
+inline float dot(const vec3f& u, const vec3f& v) {
 	return u.e[0] * v.e[0]
 		+ u.e[1] * v.e[1]
 		+ u.e[2] * v.e[2];
 }
 
-template <typename T>
-inline vec3<T> cross(const vec3<T>& u, const vec3<T>& v) {
-	return vec3<T>(u.e[1] * v.e[2] - u.e[2] * v.e[1],
+inline vec3f cross(const vec3f& u, const vec3f& v) {
+	return vec3f(u.e[1] * v.e[2] - u.e[2] * v.e[1],
 		u.e[2] * v.e[0] - u.e[0] * v.e[2],
 		u.e[0] * v.e[1] - u.e[1] * v.e[0]);
 }
 
-template <typename T>
-inline vec3<T> unit_vector(vec3<T> v) {
+inline vec3f unit_vector(vec3f v) {
 	return v / v.length();
 }
+
+// vec3 utility functions for double
+
+inline std::ostream& operator<<(std::ostream& out, const vec3d& v) {
+	return out << v.e[0] << ' ' << v.e[1] << ' ' << v.e[2];
+}
+
+inline vec3d operator+(const vec3d& u, const vec3d& v) {
+	return vec3d(u.e[0] + v.e[0], u.e[1] + v.e[1], u.e[2] + v.e[2]);
+}
+
+inline vec3d operator-(const vec3d& u, const vec3d& v) {
+	return vec3d(u.e[0] - v.e[0], u.e[1] - v.e[1], u.e[2] - v.e[2]);
+}
+
+inline vec3d operator*(const vec3d& u, const vec3d& v) {
+	return vec3d(u.e[0] * v.e[0], u.e[1] * v.e[1], u.e[2] * v.e[2]);
+}
+
+inline vec3d operator*(double t, const vec3d& v) {
+	return vec3d(t * v.e[0], t * v.e[1], t * v.e[2]);
+}
+
+inline vec3d operator*(const vec3d& v, double t) {
+	return t * v;
+}
+
+inline vec3d operator/(vec3d v, double t) {
+	return (1 / t) * v;
+}
+
+inline double dot(const vec3d& u, const vec3d& v) {
+	return u.e[0] * v.e[0]
+		+ u.e[1] * v.e[1]
+		+ u.e[2] * v.e[2];
+}
+
+inline vec3d cross(const vec3d& u, const vec3d& v) {
+	return vec3d(u.e[1] * v.e[2] - u.e[2] * v.e[1],
+		u.e[2] * v.e[0] - u.e[0] * v.e[2],
+		u.e[0] * v.e[1] - u.e[1] * v.e[0]);
+}
+
+inline vec3d unit_vector(vec3d v) {
+	return v / v.length();
+}
+
 
 
 #endif

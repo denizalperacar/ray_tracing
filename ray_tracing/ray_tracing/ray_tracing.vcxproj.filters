@@ -10,6 +10,12 @@
     <Filter Include="vector3">
       <UniqueIdentifier>{cc01bd44-c67f-4bb9-b3ec-f53f2c8fd0df}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ray">
+      <UniqueIdentifier>{28e96c3c-a9c3-4716-8f81-9fd21c822954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scene">
+      <UniqueIdentifier>{b067d048-7a4f-4c63-a20a-813ff9e1a948}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -20,6 +26,15 @@
     </ClInclude>
     <ClInclude Include="vec3.h">
       <Filter>vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="color.h">
+      <Filter>vector3</Filter>
+    </ClInclude>
+    <ClInclude Include="ray.h">
+      <Filter>ray</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,7 +5,8 @@
 
 int main() {
 
-	generate_default_image("../image.ppm");
+	camera cam;
+	generate_image("../image.ppm", cam);
 
 
 

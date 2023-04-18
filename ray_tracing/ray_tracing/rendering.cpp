@@ -1,4 +1,7 @@
 #include "rendering.h"
+#include "vec3.h"
+#include "color.h"
+#include "ray.h"
 
 #include <fstream>
 #include <exception>
@@ -18,28 +21,53 @@ Red and green together make yellow so we should expect the upper right corner to
 */
 void generate_default_image(std::string file_name)
 {
-
 	std::ofstream image;
-
 	try {
 		image.open(file_name);
 		image << "P3\n" << IMAGE_WIDTH << " " << IMAGE_HEIGHT << "\n255\n";
 		for (int j = IMAGE_HEIGHT - 1; j >= 0; --j) {
 			std::cerr << "\rScanlines remaining: " << j << " " << std::flush;
 			for (int i = 0; i < IMAGE_WIDTH; i++) {
-				auto r = static_cast<double>(i) / static_cast<double>(IMAGE_WIDTH - 1);
-				auto g = static_cast<double>(j) / static_cast<double>(IMAGE_HEIGHT - 1);
-				auto b = 0.25;
-
-				int ir = static_cast<int>(255.0 * r);
-				int ig = static_cast<int>(255.0 * g);
-				int ib = static_cast<int>(255.0 * b);
-
-				image << ir << " " << ig << " " << ib << "\n";
+				color3f pixel_color(
+					static_cast<float>(i) / (IMAGE_WIDTH - 1), 
+					static_cast<float>(j) / (IMAGE_HEIGHT - 1), 
+					0.25
+				);
+				write_color(image, pixel_color);
 			}
 		}
 	} 
 	catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
+	std::cerr << "\nDone.\n";
+}
+
+void generate_image(std::string file_name, camera const& camera)
+{
+	std::ofstream image;
+	try {
+		image.open(file_name);
+		image << "P3\n" << IMAGE_WIDTH << " " << IMAGE_HEIGHT << "\n255\n";
+		for (int j = IMAGE_HEIGHT - 1; j >= 0; --j) {
+			std::cerr << "\rScanlines remaining: " << j << " " << std::flush;
+			for (int i = 0; i < IMAGE_WIDTH; i++) {
+				auto u = static_cast<float>(i) / (IMAGE_WIDTH - 1);
+				auto v = static_cast<float>(j) / (IMAGE_HEIGHT - 1);
+				rayf r(
+					camera.origin,
+					camera.lower_left_corner 
+					+ u * camera.horizontal 
+					+ v * camera.vertical 
+					- camera.origin
+				);
+				color3f pixel_color{ ray_color(r) };
+				write_color(image, pixel_color);
+			}
+		}
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cerr << "\nDone.\n";
 }
