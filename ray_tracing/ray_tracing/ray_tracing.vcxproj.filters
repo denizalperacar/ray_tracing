@@ -16,6 +16,9 @@
     <Filter Include="scene">
       <UniqueIdentifier>{b067d048-7a4f-4c63-a20a-813ff9e1a948}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shapes">
+      <UniqueIdentifier>{94e45212-b43b-4b22-b941-929307c2cfbc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -36,11 +39,23 @@
     <ClInclude Include="camera.h">
       <Filter>scene</Filter>
     </ClInclude>
+    <ClInclude Include="simple_shapes.h">
+      <Filter>shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="ray_color.h">
+      <Filter>ray</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">
       <Filter>render</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="simple_shapes.cpp">
+      <Filter>shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="ray_color.cpp">
+      <Filter>ray</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

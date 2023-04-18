@@ -15,12 +15,16 @@
     <ClInclude Include="color.h" />
     <ClInclude Include="common.h" />
     <ClInclude Include="ray.h" />
+    <ClInclude Include="ray_color.h" />
     <ClInclude Include="rendering.h" />
+    <ClInclude Include="simple_shapes.h" />
     <ClInclude Include="vec3.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ray_color.cpp" />
     <ClCompile Include="rendering.cpp" />
+    <ClCompile Include="simple_shapes.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DBFAFB1A-A87A-4856-B10A-49719D608B24}</ProjectGuid>

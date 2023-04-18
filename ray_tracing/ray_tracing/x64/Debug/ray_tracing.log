@@ -1,2 +1,6 @@
-﻿  rendering.cpp
+﻿  main.cpp
+  ray_color.cpp
+  rendering.cpp
+  simple_shapes.cpp
+  Generating Code...
   ray_tracing.vcxproj -> D:\UE4\ray_tracing\ray_tracing\x64\Debug\ray_tracing.exe

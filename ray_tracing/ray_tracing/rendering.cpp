@@ -2,6 +2,7 @@
 #include "vec3.h"
 #include "color.h"
 #include "ray.h"
+#include "ray_color.h"
 
 #include <fstream>
 #include <exception>
