@@ -16,6 +16,7 @@
     <ClInclude Include="common.h" />
     <ClInclude Include="hittable.h" />
     <ClInclude Include="hittable_list.h" />
+    <ClInclude Include="random.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="ray_color.h" />
     <ClInclude Include="rendering.h" />

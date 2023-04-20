@@ -1,9 +1,11 @@
 #ifndef RAY_TRACER_VECTOR3_VEC3_H_
 #define RAY_TRACER_VECTOR3_VEC3_H_
 
+#include "random.h"
 #include <iostream>
 #include <array>
 #include <type_traits>
+
 
 using std::sqrt;
 
@@ -60,6 +62,18 @@ public:
 
 	T length_squared() const {
 		return e[0] * e[0] + e[1] * e[1] + e[2] * e[2];
+	}
+
+	inline static vec3 random() {
+		return vec3(random_function<T>(), random_function<T>(), random_function<T>());
+	}
+
+	inline static vec3 random(T min, T max) {
+		return vec3(
+			random_function<T>(min, max), 
+			random_function<T>(min, max), 
+			random_function<T>(min, max)
+		);
 	}
 
 public:
@@ -168,6 +182,24 @@ inline vec3d unit_vector(vec3d v) {
 	return v / v.length();
 }
 
+
+// random methods
+inline vec3f random_in_unit_sphere_f() {
+	while (true) {
+		auto p = vec3f::random(-1.f, 1.f);
+		if (p.length_squared() >= 1.f) continue;
+		return p;
+	}
+}
+
+// random methods
+inline vec3d random_in_unit_sphere_d() {
+	while (true) {
+		auto p = vec3d::random(-1., 1.);
+		if (p.length_squared() >= 1.) continue;
+		return p;
+	}
+}
 
 
 #endif

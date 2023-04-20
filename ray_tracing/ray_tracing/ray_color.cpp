@@ -1,9 +1,16 @@
 #include "ray_color.h"
 
-color3f ray_color(const rayf& r, const hittable& world) {
+color3f ray_color(const rayf& r, const hittable& world, int depth) {
 	hit_record rec;
+
+	//
+	if (depth <= 0) {
+		return color3f(0.f, 0.f, 0.f);
+	}
+
 	if (world.hit(r, 0, infinityf, rec)) {
-		return 0.5f * (rec.normal + color3f(1.f, 1.f, 1.f));
+		point3f target = rec.p + rec.normal + random_in_unit_sphere_f();
+		return 0.5f * ray_color(rayf(rec.p, target - rec.p), world, depth - 1);
 	}
 
 	vec3f unit_direction = unit_vector(r.direction());

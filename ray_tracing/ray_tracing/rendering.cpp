@@ -58,7 +58,7 @@ void generate_image(std::string file_name, camera const& camera, const hittable&
 					auto u = static_cast<float>(i + random_float()) / (IMAGE_WIDTH - 1);
 					auto v = static_cast<float>(j + random_float()) / (IMAGE_HEIGHT - 1);
 					rayf r = camera.get_ray(u, v);
-					pixel_color += ray_color(r, world) ;
+					pixel_color += ray_color(r, world, MAX_DEPTH) ;
 				}
 				write_color(image, pixel_color, SAMPLES_PER_PIXEL);
 			}

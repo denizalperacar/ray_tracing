@@ -57,6 +57,9 @@
     <ClInclude Include="hittable_list.h">
       <Filter>shapes</Filter>
     </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">
