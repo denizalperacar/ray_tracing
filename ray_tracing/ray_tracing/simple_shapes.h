@@ -4,7 +4,7 @@
 #include "vec3.h"
 #include "ray.h"
 
-bool hit_sphere(const point3f &center, float radius, const rayf &r);
+float hit_sphere(const point3f& center, float radius, const rayf& r);
 
 
 #endif

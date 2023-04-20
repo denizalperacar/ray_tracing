@@ -34,7 +34,7 @@ void generate_default_image(std::string file_name)
 					static_cast<float>(j) / (IMAGE_HEIGHT - 1), 
 					0.25
 				);
-				write_color(image, pixel_color);
+				write_color(image, pixel_color, SAMPLES_PER_PIXEL);
 			}
 		}
 	} 
@@ -44,7 +44,7 @@ void generate_default_image(std::string file_name)
 	std::cerr << "\nDone.\n";
 }
 
-void generate_image(std::string file_name, camera const& camera)
+void generate_image(std::string file_name, camera const& camera, const hittable& world)
 {
 	std::ofstream image;
 	try {
@@ -53,17 +53,14 @@ void generate_image(std::string file_name, camera const& camera)
 		for (int j = IMAGE_HEIGHT - 1; j >= 0; --j) {
 			std::cerr << "\rScanlines remaining: " << j << " " << std::flush;
 			for (int i = 0; i < IMAGE_WIDTH; i++) {
-				auto u = static_cast<float>(i) / (IMAGE_WIDTH - 1);
-				auto v = static_cast<float>(j) / (IMAGE_HEIGHT - 1);
-				rayf r(
-					camera.origin,
-					camera.lower_left_corner 
-					+ u * camera.horizontal 
-					+ v * camera.vertical 
-					- camera.origin
-				);
-				color3f pixel_color{ ray_color(r) };
-				write_color(image, pixel_color);
+				color3f pixel_color{0.f, 0.f, 0.f};
+				for (int s = 0; s < SAMPLES_PER_PIXEL; ++s) {
+					auto u = static_cast<float>(i + random_float()) / (IMAGE_WIDTH - 1);
+					auto v = static_cast<float>(j + random_float()) / (IMAGE_HEIGHT - 1);
+					rayf r = camera.get_ray(u, v);
+					pixel_color += ray_color(r, world) ;
+				}
+				write_color(image, pixel_color, SAMPLES_PER_PIXEL);
 			}
 		}
 	}

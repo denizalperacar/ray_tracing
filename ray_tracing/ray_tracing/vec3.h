@@ -1,8 +1,6 @@
 #ifndef RAY_TRACER_VECTOR3_VEC3_H_
 #define RAY_TRACER_VECTOR3_VEC3_H_
 
-#include "common.h"
-#include <cmath>
 #include <iostream>
 #include <array>
 #include <type_traits>
@@ -21,18 +19,18 @@ class vec3 {
 public:
 	vec3() {
 		if (std::is_same<T, float>::value) {
-			e{ 0.f,0.f,0.f };
+			e = { 0.f,0.f,0.f };
 		}
 		else {
-			e{ 0.,0.,0. };
+			e = { 0.,0.,0. };
 		}
 	}
 
 	explicit vec3(T e1, T e2, T e3) : e{ e1, e2, e3 } {}
 
-	double x() const { return e[0]; }
-	double y() const { return e[1]; }
-	double z() const { return e[2]; }
+	T x() const { return e[0]; }
+	T y() const { return e[1]; }
+	T z() const { return e[2]; }
 
 	vec3 operator-() const { return vec3(-e[0], -e[1], -e[2]); }
 	T operator[](int i) const { return e[i]; }

@@ -19,6 +19,9 @@
     <Filter Include="shapes">
       <UniqueIdentifier>{94e45212-b43b-4b22-b941-929307c2cfbc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shapes\sphere">
+      <UniqueIdentifier>{a72dcd26-36a4-4d0a-8399-0ef848095e4d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -45,6 +48,15 @@
     <ClInclude Include="ray_color.h">
       <Filter>ray</Filter>
     </ClInclude>
+    <ClInclude Include="hittable.h">
+      <Filter>shapes</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>shapes\sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable_list.h">
+      <Filter>shapes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">
@@ -56,6 +68,12 @@
     </ClCompile>
     <ClCompile Include="ray_color.cpp">
       <Filter>ray</Filter>
+    </ClCompile>
+    <ClCompile Include="sphere.cpp">
+      <Filter>shapes\sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="hittable_list.cpp">
+      <Filter>shapes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

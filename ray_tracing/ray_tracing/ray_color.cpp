@@ -1,12 +1,13 @@
 #include "ray_color.h"
 
-color3f ray_color(const rayf& r) {
-	if (hit_sphere(point3f(0.f, 0.f, -1.0f), 0.5f, r)) {
-		return color3f(1.0f,0.f,0.f);
+color3f ray_color(const rayf& r, const hittable& world) {
+	hit_record rec;
+	if (world.hit(r, 0, infinityf, rec)) {
+		return 0.5f * (rec.normal + color3f(1.f, 1.f, 1.f));
 	}
 
 	vec3f unit_direction = unit_vector(r.direction());
-	float t = static_cast<float> (0.5f * (unit_direction.y() + 1.0f));
+	auto t = static_cast<float> (0.5f * (unit_direction.y() + 1.0f));
 	return (1.0f - t) * color3f(1.0f, 1.0f, 1.0f) + t * color3f(0.5f, 0.7f, 1.0f);
 }
 

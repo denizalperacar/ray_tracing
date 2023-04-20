@@ -4,23 +4,42 @@
 #include "vec3.h"
 #include <fstream>
 
-template<typename T>
-void write_color(std::ostream& out, color<T> pixel_color) {
+void write_color(std::ostream& out, color3f pixel_color, int samples_per_pixel) {
 	// writes the mapped [0, 255] value of each colow componenet
+	auto r = pixel_color.x();
+	auto g = pixel_color.y();
+	auto b = pixel_color.z();
 
-	out << static_cast<int> (255.999 * pixel_color.x()) << " "
-		<< static_cast<int> (255.999 * pixel_color.y()) << " "
-		<< static_cast<int> (255.999 * pixel_color.z()) << " "
+	// scale the color by the number of samples sent to the sensor
+	auto scale = 1.0f / samples_per_pixel;
+	r *= scale;
+	g *= scale;
+	b *= scale;
+
+
+	out << static_cast<int> (255.999 * clamp(r, 0.f, 0.999f)) << " "
+		<< static_cast<int> (255.999 * clamp(g, 0.f, 0.999f)) << " "
+		<< static_cast<int> (255.999 * clamp(b, 0.f, 0.999f)) << " "
 		<< "\n";
 }
 
-template<typename T>
-void write_color(std::ofstream& out, color<T> pixel_color) {
-	// writes the mapped [0, 255] value of each colow componenet
+void write_color(std::ofstream& out, color3f pixel_color, int samples_per_pixel) {
 
-	out << static_cast<int> (255.999 * pixel_color.x()) << " "
-		<< static_cast<int> (255.999 * pixel_color.y()) << " "
-		<< static_cast<int> (255.999 * pixel_color.z()) << " "
+	// writes the mapped [0, 255] value of each colow componenet
+	auto r = pixel_color.x();
+	auto g = pixel_color.y();
+	auto b = pixel_color.z();
+
+	// scale the color by the number of samples sent to the sensor
+	auto scale = 1.0f / samples_per_pixel;
+	r *= scale;
+	g *= scale;
+	b *= scale;
+
+
+	out << static_cast<int> (255.999 * clamp(r, 0.f, 0.999f)) << " "
+		<< static_cast<int> (255.999 * clamp(g, 0.f, 0.999f)) << " "
+		<< static_cast<int> (255.999 * clamp(b, 0.f, 0.999f)) << " "
 		<< "\n";
 }
 

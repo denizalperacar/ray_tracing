@@ -3,9 +3,9 @@
 
 #include "ray.h"
 #include "vec3.h"
-#include "simple_shapes.h"
+#include "hittable_list.h"
 
-color3f ray_color(const rayf& r);
+color3f ray_color(const rayf& r, const hittable &world);
 color3d ray_color(const rayd& r);
 
 
