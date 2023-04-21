@@ -22,6 +22,9 @@
     <Filter Include="shapes\sphere">
       <UniqueIdentifier>{a72dcd26-36a4-4d0a-8399-0ef848095e4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="materials">
+      <UniqueIdentifier>{1d0bac4a-f073-492b-98e3-d992256aff3b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -59,6 +62,9 @@
     </ClInclude>
     <ClInclude Include="random.h">
       <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="materials.h">
+      <Filter>materials</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -8,9 +8,15 @@ color3f ray_color(const rayf& r, const hittable& world, int depth) {
 		return color3f(0.f, 0.f, 0.f);
 	}
 
-	if (world.hit(r, 0, infinityf, rec)) {
-		point3f target = rec.p + rec.normal + random_in_unit_sphere_f();
-		return 0.5f * ray_color(rayf(rec.p, target - rec.p), world, depth - 1);
+	if (world.hit(r, 0.001f, infinityf, rec)) {
+
+		rayf scattered;
+		color3f attenuation;
+
+		if (rec.mat_ptr->scatter(r, rec, attenuation, scattered)) {
+			return attenuation * ray_color(scattered, world, depth - 1);
+		}
+		return color3f(0.f, 0.f, 0.f);
 	}
 
 	vec3f unit_direction = unit_vector(r.direction());

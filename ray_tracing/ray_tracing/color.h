@@ -31,10 +31,11 @@ void write_color(std::ofstream& out, color3f pixel_color, int samples_per_pixel)
 	auto b = pixel_color.z();
 
 	// scale the color by the number of samples sent to the sensor
+	// and gamma corrected for gamma = 2.0
 	auto scale = 1.0f / samples_per_pixel;
-	r *= scale;
-	g *= scale;
-	b *= scale;
+	r = sqrtf(scale * r);
+	g = sqrtf(scale * g);
+	b = sqrtf(scale * b);
 
 
 	out << static_cast<int> (255.999 * clamp(r, 0.f, 0.999f)) << " "

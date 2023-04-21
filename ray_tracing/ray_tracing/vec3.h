@@ -8,6 +8,7 @@
 
 
 using std::sqrt;
+using std::fabs;
 
 
 template <typename T>
@@ -75,6 +76,13 @@ public:
 			random_function<T>(min, max)
 		);
 	}
+
+	bool near_zero() const {
+		// Return true if the vector is close to zero in all dimensions.
+		const auto s = 1e-8;
+		return (fabs(e[0]) < s) && (fabs(e[1]) < s) && (fabs(e[2]) < s);
+	}
+
 
 public:
 	std::array<T, 3> e;
@@ -201,5 +209,39 @@ inline vec3d random_in_unit_sphere_d() {
 	}
 }
 
+inline vec3f random_unit_vector_on_sphere_f() {
+	return unit_vector(random_in_unit_sphere_f());
+}
+
+inline vec3d random_unit_vector_on_sphere_d() {
+	return unit_vector(random_in_unit_sphere_d());
+}
+
+
+inline vec3f random_in_hemisphere(const vec3f& normal) {
+	vec3f in_unit_sphere = random_in_unit_sphere_f();
+	if (dot(in_unit_sphere, normal) > 0.0) // In the same hemisphere as the normal
+		return in_unit_sphere;
+	else
+		return -in_unit_sphere;
+}
+
+
+inline vec3f reflect(const vec3f& v, const vec3f& n) {
+	return v - 2.0f * dot(v, n) * n;
+}
+
+inline vec3d reflect(const vec3d& v, const vec3d& n) {
+	return v - 2.0 * dot(v, n) * n;
+}
+
+
+inline vec3f refract(const vec3f& uv, const vec3f& n, float etai_over_etae) {
+	auto cos_theta = fminf(dot(-uv, n), 1.0f);
+	vec3f r_out_prependicular = etai_over_etae * (uv + cos_theta * n);
+	vec3f r_out_parallel = -sqrtf(fabsf(1.0f - r_out_prependicular.length_squared())) * n;
+	return r_out_parallel + r_out_prependicular;
+
+}
 
 #endif
