@@ -244,4 +244,12 @@ inline vec3f refract(const vec3f& uv, const vec3f& n, float etai_over_etae) {
 
 }
 
+inline vec3f random_in_unit_disk() {
+	while (true) {
+		auto p = vec3f(random_float(-1.f, 1.f), random_float(-1.f, 1.f), 0);
+		if (p.length_squared() >= 1) continue;
+		return p;
+	}
+}
+
 #endif

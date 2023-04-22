@@ -13,7 +13,7 @@ using std::sqrtf;
 using std::sqrt;
 
 
-constexpr auto IMAGE_ASPECT_RATIO = 16.0 / 9.0;
+constexpr float IMAGE_ASPECT_RATIO = 16.0f / 9.0f;
 constexpr int IMAGE_WIDTH = 400;
 constexpr int IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / IMAGE_ASPECT_RATIO);
 constexpr int SAMPLES_PER_PIXEL = 100;
