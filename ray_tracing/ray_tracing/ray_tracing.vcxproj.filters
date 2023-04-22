@@ -66,6 +66,9 @@
     <ClInclude Include="materials.h">
       <Filter>materials</Filter>
     </ClInclude>
+    <ClInclude Include="default_scene_generator.h">
+      <Filter>scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">
@@ -83,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="hittable_list.cpp">
       <Filter>shapes</Filter>
+    </ClCompile>
+    <ClCompile Include="default_scene_generator.cpp">
+      <Filter>scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

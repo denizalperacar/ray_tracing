@@ -14,6 +14,7 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="default_scene_generator.h" />
     <ClInclude Include="hittable.h" />
     <ClInclude Include="hittable_list.h" />
     <ClInclude Include="materials.h" />
@@ -26,6 +27,7 @@
     <ClInclude Include="vec3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="default_scene_generator.cpp" />
     <ClCompile Include="hittable_list.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ray_color.cpp" />

@@ -6,11 +6,11 @@
 
 #include <vector>
 
-class hitable_list : public hittable {
+class hittable_list : public hittable {
 
 public:
-	hitable_list() {}
-	hitable_list(shared_ptr<hittable> object) { add(object); }
+	hittable_list() {}
+	hittable_list(shared_ptr<hittable> object) { add(object); }
 
 	void clear() { objects.clear(); }
 	void add(shared_ptr<hittable> object) { objects.push_back(object); }
