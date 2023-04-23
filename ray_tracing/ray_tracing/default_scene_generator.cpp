@@ -1,6 +1,8 @@
 #include "default_scene_generator.h"
 #include "materials.h"
 #include "sphere.h"
+#include "moving_sphere.h"
+
 
 hittable_list random_scene() {
 
@@ -21,7 +23,8 @@ hittable_list random_scene() {
           // diffuse
           auto albedo = color3f::random() * color3f::random();
           sphere_material = make_shared<lambertian>(albedo);
-          world.add(make_shared<sphere>(center, 0.2f, sphere_material));
+          auto center2 = center + vec3f(0.f, random_float(0.f, 0.5f), 0.f);
+          world.add(make_shared<moving_sphere>(center, center2, 0.f, 1.0f, 0.2f, sphere_material));
         }
         else if (choose_mat < 0.95f) {
           // metal

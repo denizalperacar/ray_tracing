@@ -12,10 +12,12 @@ public:
 		point3f lookfrom,
 		point3f lookat,
 		vec3f up_vector,
-		float vertical_field_of_view, 
+		float vertical_field_of_view,
 		float aspect_ratio,
 		float aperature,
-		float focus_distance
+		float focus_distance,
+		float _time0 = 0.f,
+		float _time1 = 0.f
 		) {
 
 		float theta = degrees_to_radians(vertical_field_of_view);
@@ -35,6 +37,8 @@ public:
 			- vertical_ / 2.f - focus_distance * w_
 		);
 		lens_radius_ = aperature / 2.f;
+		time0 = _time0;
+		time1 = _time1;
 	}
 
 	rayf get_ray(float s, float t) const {
@@ -43,8 +47,9 @@ public:
 		vec3f offset = u_ * rd.x() + v_ * rd.y();
 
 		return rayf(
-			origin_ + offset, 
-			lower_left_corner_ + s * horizontal_ + t * vertical_ - origin_ - offset
+			origin_ + offset,
+			lower_left_corner_ + s * horizontal_ + t * vertical_ - origin_ - offset,
+			random_float(time0, time1)
 		);
 	}
 
@@ -55,6 +60,7 @@ private:
 	point3f lower_left_corner_;
 	vec3f u_, v_, w_;
 	float lens_radius_;
+	float time0, time1;
 };
 
 

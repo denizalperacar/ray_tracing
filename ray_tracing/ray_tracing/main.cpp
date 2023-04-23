@@ -14,7 +14,7 @@ int main() {
 	float aperature = 0.1f;
 
 	// camera cam(point3f(-2.0f, 2.f, 1.f), point3f(0.f, 0.f, -1.f), vec3f(0.f, 1.f, 0.f), 90.f, IMAGE_ASPECT_RATIO);
-	camera cam(lookfrom, lookat, up, 20.f, IMAGE_ASPECT_RATIO, aperature, dist_to_focus);
+	camera cam(lookfrom, lookat, up, 20.f, IMAGE_ASPECT_RATIO, aperature, dist_to_focus, 0.f, 1.0f);
 	
 	hittable_list world = random_scene();
 

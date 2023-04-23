@@ -18,6 +18,7 @@
     <ClInclude Include="hittable.h" />
     <ClInclude Include="hittable_list.h" />
     <ClInclude Include="materials.h" />
+    <ClInclude Include="moving_sphere.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="ray_color.h" />
@@ -30,6 +31,7 @@
     <ClCompile Include="default_scene_generator.cpp" />
     <ClCompile Include="hittable_list.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="moving_sphere.cpp" />
     <ClCompile Include="ray_color.cpp" />
     <ClCompile Include="rendering.cpp" />
     <ClCompile Include="simple_shapes.cpp" />

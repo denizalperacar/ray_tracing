@@ -69,6 +69,9 @@
     <ClInclude Include="default_scene_generator.h">
       <Filter>scene</Filter>
     </ClInclude>
+    <ClInclude Include="moving_sphere.h">
+      <Filter>shapes\sphere</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">
@@ -89,6 +92,9 @@
     </ClCompile>
     <ClCompile Include="default_scene_generator.cpp">
       <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="moving_sphere.cpp">
+      <Filter>shapes\sphere</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

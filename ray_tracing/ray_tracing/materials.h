@@ -26,7 +26,7 @@ public:
 			scatter_direction = rec.normal;
 		}
 
-		scattered = rayf(rec.p, scatter_direction);
+		scattered = rayf(rec.p, scatter_direction, r_in.time());
 		attenuation = albedo;
 		return true;
 	}
@@ -45,7 +45,7 @@ public:
 		const rayf& r_in, const hit_record& rec, color3f& attenuation, rayf& scattered
 	) const override {
 		vec3f reflected = reflect(unit_vector(r_in.direction()), rec.normal);
-		scattered = rayf(rec.p, reflected + fuzz * random_in_unit_sphere_f());
+		scattered = rayf(rec.p, reflected + fuzz * random_in_unit_sphere_f(), r_in.time());
 		attenuation = albedo;
 		return (dot(scattered.direction(), rec.normal) > 0.0f);
 	}
@@ -84,7 +84,7 @@ public:
 			direction = refract(unit_direction, rec.normal, refraction_ratio);
 		}
 
-		scattered = rayf(rec.p, direction);
+		scattered = rayf(rec.p, direction, r_in.time());
 		return true;
 	}
 
