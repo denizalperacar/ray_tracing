@@ -11,6 +11,7 @@ public:
 		: center(cen), radius(r), mat_ptr(m) { }
 
 	virtual bool hit(const rayf& r, float t_min, float t_max, hit_record& rec) const override;
+	virtual bool bounding_box(float time0, float time1, aabb& output_box) const override;
 
 public: 
 	point3f center;

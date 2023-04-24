@@ -20,6 +20,9 @@ public:
 		const rayf& r, float t_min, float t_max, hit_record& rec
 	) const override;
 
+	virtual bool bounding_box(
+		float _time0, float _time1, aabb& output_box) const override;
+
 	point3f center(float time) const;
 
 public:

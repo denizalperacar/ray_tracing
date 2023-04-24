@@ -19,6 +19,8 @@ public:
 		const rayf& r, float t_min, float t_max, hit_record& rec 
 	) const override;
 
+	virtual bool bounding_box(float time0, float time1, aabb& output_box) const override;
+
 public:
 	std::vector<shared_ptr<hittable>> objects;
 };

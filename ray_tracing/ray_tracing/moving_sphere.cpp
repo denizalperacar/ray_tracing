@@ -35,3 +35,14 @@ bool moving_sphere::hit(
 point3f moving_sphere::center(float time) const {
 	return center0 + ((time - time0) /  (time1 - time0)) * (center1 - center0);
 }
+
+bool moving_sphere::bounding_box(
+	float _time0, float _time1, aabb& output_box) const {
+	aabb box0(
+		center(_time0) - vec3f(radius, radius, radius),
+		center(_time0) + vec3f(radius, radius, radius));
+	aabb box1(
+		center(_time1) - vec3f(radius, radius, radius),
+		center(_time1) + vec3f(radius, radius, radius));
+	output_box = surrounding_box(box0, box1);
+}
