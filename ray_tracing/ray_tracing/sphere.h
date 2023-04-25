@@ -17,6 +17,8 @@ public:
 	point3f center;
 	float radius;
 	shared_ptr<material> mat_ptr;
+	static void get_sphere_uv(const point3f& p, float& u, float& v);
+
 };
 
 

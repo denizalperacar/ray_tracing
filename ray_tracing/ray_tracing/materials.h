@@ -2,6 +2,7 @@
 #define RAY_TRACING_MATERIAL_MATERIAL_H_
 
 #include "common.h"
+#include "texture.h"
 
 struct hit_record;
 
@@ -15,7 +16,8 @@ public:
 
 class lambertian : public material {
 public:
-	lambertian(const color3f& a) : albedo(a) {}
+	lambertian(const color3f& a) : albedo(make_shared<solid_color>(a)) {}
+	lambertian(shared_ptr<texture> a) : albedo(a) {}
 
 	virtual bool scatter(
 		const rayf& r_in, const hit_record& rec, color3f& attenuation, rayf& scattered
@@ -27,12 +29,12 @@ public:
 		}
 
 		scattered = rayf(rec.p, scatter_direction, r_in.time());
-		attenuation = albedo;
+		attenuation = albedo->value(rec.u, rec.v, rec.p);
 		return true;
 	}
 
 public:
-	color3f albedo;
+	shared_ptr<texture> albedo;
 };
 
 

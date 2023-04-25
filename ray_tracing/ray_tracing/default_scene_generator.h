@@ -6,5 +6,6 @@
 
 
 hittable_list random_scene(int n);
+hittable_list two_spheres();
 
 #endif

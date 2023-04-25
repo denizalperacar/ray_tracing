@@ -43,7 +43,7 @@ bvh_node::bvh_node(
 	size_t start, size_t end, float time0, float time1
 ) {
 
-	auto objects = src_objects;
+	std::vector<shared_ptr<hittable>> objects = src_objects;
 	int axis = random_int(0, 2);
 	auto compare_operator = 
 		(axis == 0) ? box_x_compare

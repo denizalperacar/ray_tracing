@@ -8,7 +8,8 @@ hittable_list random_scene(int n = 11) {
 
 	hittable_list world;
 
-	auto ground_material = make_shared<lambertian>(color3f(0.5f, 0.5f, 0.5f));
+  auto checker = make_shared<checker_texture>(color3f(0.2f, 0.3f, 0.1f), color3f(0.9f,0.9f,0.9f));
+	auto ground_material = make_shared<lambertian>(checker);
 	world.add(make_shared<sphere>(point3f(0.f, -1000.f, 0.f), 1000.f, ground_material));
 
   for (int a = -n; a < n; a++) {
@@ -17,6 +18,7 @@ hittable_list random_scene(int n = 11) {
       point3f center(a + 0.9f * random_float(), 0.2f, b + 0.9f * random_float());
 
       if ((center - point3f(4.f, 0.2f, 0.f)).length() > 0.9f) {
+        std::cout << "new shape added\n";
         shared_ptr<material> sphere_material;
 
         if (choose_mat < 0.8f) {
@@ -24,7 +26,10 @@ hittable_list random_scene(int n = 11) {
           auto albedo = color3f::random() * color3f::random();
           sphere_material = make_shared<lambertian>(albedo);
           auto center2 = center + vec3f(0.f, random_float(0.f, 0.5f), 0.f);
-          world.add(make_shared<moving_sphere>(center, center2, 0.f, 1.0f, 0.2f, sphere_material));
+          if (choose_mat < 0.1f) {
+            world.add(make_shared<moving_sphere>(center, center2, 0.f, 1.0f, 0.2f, sphere_material));
+          }
+          world.add(make_shared<sphere>(center, 0.2f, sphere_material));
         }
         else if (choose_mat < 0.95f) {
           // metal
@@ -42,6 +47,7 @@ hittable_list random_scene(int n = 11) {
     }
   }
 
+  
   auto material1 = make_shared<dielectric>(1.5f);
   world.add(make_shared<sphere>(point3f(0.f, 1.f, 0.f), 1.0f, material1));
 
@@ -50,7 +56,19 @@ hittable_list random_scene(int n = 11) {
 
   auto material3 = make_shared<metal>(color3f(0.7f, 0.6f, 0.5f), 0.0f);
   world.add(make_shared<sphere>(point3f(4.f, 1.f, 0.f), 1.0f, material3));
-
+  
 
 	return world;
+}
+
+
+hittable_list two_spheres() {
+  hittable_list objects;
+
+  auto checker = make_shared<checker_texture>(color3f(0.2f, 0.3f, 0.1f), color3f(0.9f, 0.9f, 0.9f));
+
+  objects.add(make_shared<sphere>(point3f(0.f, -10.f, 0.f), 10.f, make_shared<lambertian>(checker)));
+  objects.add(make_shared<sphere>(point3f(0.f, 10.f, 0.f), 10.f, make_shared<lambertian>(checker)));
+
+  return objects;
 }

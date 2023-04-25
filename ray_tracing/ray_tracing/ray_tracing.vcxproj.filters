@@ -31,6 +31,9 @@
     <Filter Include="shapes\bvh">
       <UniqueIdentifier>{d23c899a-6c1d-451d-9612-4227a4042648}</UniqueIdentifier>
     </Filter>
+    <Filter Include="texture">
+      <UniqueIdentifier>{ede17e26-8118-4c68-a321-1bc4cd1d2875}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -83,6 +86,9 @@
     </ClInclude>
     <ClInclude Include="bvh.h">
       <Filter>shapes\bvh</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,7 @@ bool sphere::hit(const rayf& r, float t_min, float t_max, hit_record& rec) const
 	rec.p = r.at(root);
 	vec3f outward_normal = (rec.p - center) / radius;
 	rec.set_face_normal(r, outward_normal);
+	get_sphere_uv(outward_normal, rec.u, rec.v);
 	rec.mat_ptr = mat_ptr;
 
 	return true;
@@ -38,4 +39,13 @@ bool sphere::bounding_box(float time0, float time1, aabb& output_box) const {
 		center + vec3f(radius, radius, radius)
 	);
 	return true;
+}
+
+void sphere::get_sphere_uv(const point3f& p, float& u, float& v) {
+
+	float theta = acosf(-p.y());
+	float phi = atan2f(-p.z(), p.x()) + pi_f;
+
+	u = phi / (2 * pi_f);
+	v = theta / (pi_f);
 }
