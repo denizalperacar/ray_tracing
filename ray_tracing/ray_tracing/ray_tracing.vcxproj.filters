@@ -25,6 +25,12 @@
     <Filter Include="materials">
       <UniqueIdentifier>{1d0bac4a-f073-492b-98e3-d992256aff3b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shapes\AABB">
+      <UniqueIdentifier>{2811c114-a1cf-449e-886b-84a0f8e14f7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shapes\bvh">
+      <UniqueIdentifier>{d23c899a-6c1d-451d-9612-4227a4042648}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -72,6 +78,12 @@
     <ClInclude Include="moving_sphere.h">
       <Filter>shapes\sphere</Filter>
     </ClInclude>
+    <ClInclude Include="AABB.h">
+      <Filter>shapes\AABB</Filter>
+    </ClInclude>
+    <ClInclude Include="bvh.h">
+      <Filter>shapes\bvh</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">
@@ -95,6 +107,9 @@
     </ClCompile>
     <ClCompile Include="moving_sphere.cpp">
       <Filter>shapes\sphere</Filter>
+    </ClCompile>
+    <ClCompile Include="bvh.cpp">
+      <Filter>shapes\bvh</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

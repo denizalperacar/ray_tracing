@@ -4,15 +4,15 @@
 #include "moving_sphere.h"
 
 
-hittable_list random_scene() {
+hittable_list random_scene(int n = 11) {
 
 	hittable_list world;
 
 	auto ground_material = make_shared<lambertian>(color3f(0.5f, 0.5f, 0.5f));
 	world.add(make_shared<sphere>(point3f(0.f, -1000.f, 0.f), 1000.f, ground_material));
 
-  for (int a = -11; a < 11; a++) {
-    for (int b = -11; b < 11; b++) {
+  for (int a = -n; a < n; a++) {
+    for (int b = -n; b < n; b++) {
       auto choose_mat = random_float();
       point3f center(a + 0.9f * random_float(), 0.2f, b + 0.9f * random_float());
 

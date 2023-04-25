@@ -45,4 +45,5 @@ bool moving_sphere::bounding_box(
 		center(_time1) - vec3f(radius, radius, radius),
 		center(_time1) + vec3f(radius, radius, radius));
 	output_box = surrounding_box(box0, box1);
+	return true;
 }
