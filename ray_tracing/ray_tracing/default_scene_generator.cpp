@@ -2,6 +2,7 @@
 #include "materials.h"
 #include "sphere.h"
 #include "moving_sphere.h"
+#include "image_texture.h"
 
 
 hittable_list random_scene(int n = 11) {
@@ -82,4 +83,12 @@ hittable_list two_perlin_spheres() {
   objects.add(make_shared<sphere>(point3f(0.f, 2.f, 0.f), 2.f, make_shared<lambertian>(checker)));
 
   return objects;
+}
+
+hittable_list earth() {
+  auto earth_texture = make_shared<image_texture>("../earth.jpg");
+  auto earth_surface = make_shared<lambertian>(earth_texture);
+  auto globe = make_shared<sphere>(point3f(0.f, 0.f, 0.f), 2.f, earth_surface);
+
+  return hittable_list(globe);
 }

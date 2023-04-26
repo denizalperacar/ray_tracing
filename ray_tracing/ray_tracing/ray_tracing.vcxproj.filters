@@ -34,6 +34,9 @@
     <Filter Include="texture">
       <UniqueIdentifier>{ede17e26-8118-4c68-a321-1bc4cd1d2875}</UniqueIdentifier>
     </Filter>
+    <Filter Include="dependencies">
+      <UniqueIdentifier>{47daeb0f-56ed-4c9d-b0a5-ad1efdf09532}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -92,6 +95,15 @@
     </ClInclude>
     <ClInclude Include="perlin_noise.h">
       <Filter>texture</Filter>
+    </ClInclude>
+    <ClInclude Include="image_texture.h">
+      <Filter>texture</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>dependencies</Filter>
+    </ClInclude>
+    <ClInclude Include="load_images.h">
+      <Filter>common</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

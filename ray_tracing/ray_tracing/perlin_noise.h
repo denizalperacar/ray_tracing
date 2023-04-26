@@ -52,6 +52,21 @@ public:
 		return trilinear_interpolation(c, u, v, w);
 	}
 
+	float turbulance(const point3f& p, int depth = 7) const {
+		float accum = 0.0f;
+		point3f temp_p = p;
+		float weight = 1.0f;
+
+		for (int i = 0; i < depth; i++) {
+			accum += weight * noise(temp_p);
+			weight *= 0.5;
+			temp_p = 2.0f * temp_p;
+		}
+
+		return fabsf(accum);
+	}
+
+
 private:
 	static const uint32_t point_count{ 256 };
 	vec3f* ranvec;

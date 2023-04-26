@@ -66,7 +66,7 @@ public:
 
 
 	virtual color3f value(float u, float v, const point3f& p) const override {
-		return color3f(1.f, 1.f, 1.f) * 0.5f * (1 + noise.noise(scale * p));
+		return color3f(1.f, 1.f, 1.f) * 0.5f * (1.f + sinf( scale * p.z() + 10 * noise.turbulance(scale * p) ));
 	}
 private:
 	perlin noise;
