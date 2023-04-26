@@ -2,6 +2,7 @@
 #define RAY_TRACING_TEXTURE_TEXTURE_H_
 
 #include "common.h"
+#include "perlin_noise.h"
 
 /*
 @brief: An abstract calls to query texture from the derived texture 
@@ -55,6 +56,21 @@ public:
 	shared_ptr<texture> odd;
 	shared_ptr<texture> even;
 	float frequency = 10.f;
+};
+
+
+class noise_texture : public texture {
+public:
+	noise_texture() = default;
+	noise_texture(float noise_scale) : scale(noise_scale) {}
+
+
+	virtual color3f value(float u, float v, const point3f& p) const override {
+		return color3f(1.f, 1.f, 1.f) * 0.5f * (1 + noise.noise(scale * p));
+	}
+private:
+	perlin noise;
+	float scale;
 };
 
 #endif

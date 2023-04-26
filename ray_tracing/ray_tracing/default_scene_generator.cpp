@@ -72,3 +72,14 @@ hittable_list two_spheres() {
 
   return objects;
 }
+
+hittable_list two_perlin_spheres() {
+  hittable_list objects;
+
+  auto checker = make_shared<noise_texture>(4.0f);
+
+  objects.add(make_shared<sphere>(point3f(0.f, -1000.f, 0.f), 1000.f, make_shared<lambertian>(checker)));
+  objects.add(make_shared<sphere>(point3f(0.f, 2.f, 0.f), 2.f, make_shared<lambertian>(checker)));
+
+  return objects;
+}

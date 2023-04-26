@@ -5,6 +5,7 @@
 #include <memory>
 #include <cmath>
 #include <limits>
+#include <cstdint>
 
 
 using std::shared_ptr;

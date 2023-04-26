@@ -7,5 +7,6 @@
 
 hittable_list random_scene(int n);
 hittable_list two_spheres();
+hittable_list two_perlin_spheres();
 
 #endif

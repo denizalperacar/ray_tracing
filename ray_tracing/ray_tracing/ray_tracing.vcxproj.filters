@@ -90,6 +90,9 @@
     <ClInclude Include="texture.h">
       <Filter>texture</Filter>
     </ClInclude>
+    <ClInclude Include="perlin_noise.h">
+      <Filter>texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">

@@ -23,9 +23,17 @@ int main() {
     aperture = 0.1f;
     break;
 
-  default:
+  
   case 2:
     world = two_spheres();
+    lookfrom = point3f(13.f, 2.f, 3.f);
+    lookat = point3f(0.f, 0.f, 0.f);
+    vfov = 20.0f;
+    break;
+
+  default:
+  case 3:
+    world = two_perlin_spheres();
     lookfrom = point3f(13.f, 2.f, 3.f);
     lookat = point3f(0.f, 0.f, 0.f);
     vfov = 20.0f;

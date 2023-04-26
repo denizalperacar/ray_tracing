@@ -21,6 +21,7 @@
     <ClInclude Include="hittable_list.h" />
     <ClInclude Include="materials.h" />
     <ClInclude Include="moving_sphere.h" />
+    <ClInclude Include="perlin_noise.h" />
     <ClInclude Include="random.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="ray_color.h" />
