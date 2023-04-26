@@ -9,6 +9,10 @@ struct hit_record;
 
 class material {
 public:
+	virtual color3f emitted(float u, float v, const point3f& p) const {
+		return color3f(0.f, 0.f, 0.f);
+	}
+	 
 	virtual bool scatter(
 		const rayf& r_in, const hit_record& rec, color3f& attenuation, rayf& scattered
 	) const = 0;
@@ -99,6 +103,27 @@ private:
 		r0 = r0 * r0;
 		return r0 + (1 - r0) * powf((1.0f - cosine), 5);
 	}
+};
+
+class diffuse_light : public material {
+public:
+	diffuse_light(shared_ptr<texture> a) : emit(a) {}
+	diffuse_light(color3f c) : emit(make_shared<solid_color>(c)) {}
+
+	virtual bool scatter(
+		const rayf& r_in, const hit_record& rec,
+		color3f& attenuation, rayf& scattered
+	) const override {
+		return false;
+	}
+
+	virtual color3f emitted(float u, float v, const point3f& p) const override {
+		return emit->value(u, v, p);
+	}
+
+public:
+	shared_ptr<texture> emit;
+
 };
 
 

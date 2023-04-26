@@ -8,7 +8,7 @@
 #include <string>
 
 void generate_default_image(std::string file_name);
-void generate_image(std::string file_name, camera const &camera, const hittable& world);
+void generate_image(std::string file_name, camera const& camera, const hittable& world, const color3f& background);
 
 
 

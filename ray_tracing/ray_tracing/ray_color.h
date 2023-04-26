@@ -6,7 +6,7 @@
 #include "hittable_list.h"
 #include "materials.h"
 
-color3f ray_color(const rayf& r, const hittable &world, int depth);
+color3f ray_color(const rayf& r, const color3f& background, const hittable& world, int depth);
 color3d ray_color(const rayd& r);
 
 

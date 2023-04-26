@@ -3,6 +3,7 @@
 #include "sphere.h"
 #include "moving_sphere.h"
 #include "image_texture.h"
+#include "rectangle.h"
 
 
 hittable_list random_scene(int n = 11) {
@@ -91,4 +92,19 @@ hittable_list earth() {
   auto globe = make_shared<sphere>(point3f(0.f, 0.f, 0.f), 2.f, earth_surface);
 
   return hittable_list(globe);
+}
+
+
+hittable_list simple_light() {
+  hittable_list objects;
+
+  auto pertext = make_shared<noise_texture>(4.f);
+  auto difflight = make_shared<diffuse_light>(color3f(4.f, 4.f, 4.f));
+  objects.add(make_shared<sphere>(point3f(0.f, -1000.f, 0.f), 1000.f, make_shared<lambertian>(pertext)));
+  objects.add(make_shared<sphere>(point3f(0.f, 2.f, 0.f), 2.f, make_shared<lambertian>(pertext)));
+
+  
+  objects.add(make_shared<xy_rect>(3.f, 5.f, 1.f, 3.f, -2.f, difflight));
+
+  return objects;
 }

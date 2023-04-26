@@ -44,7 +44,7 @@ void generate_default_image(std::string file_name)
 	std::cerr << "\nDone.\n";
 }
 
-void generate_image(std::string file_name, camera const& camera, const hittable& world)
+void generate_image(std::string file_name, camera const& camera, const hittable& world, const color3f& background)
 {
 	std::ofstream image;
 	try {
@@ -58,7 +58,7 @@ void generate_image(std::string file_name, camera const& camera, const hittable&
 					auto u = static_cast<float>(i + random_float()) / (IMAGE_WIDTH - 1);
 					auto v = static_cast<float>(j + random_float()) / (IMAGE_HEIGHT - 1);
 					rayf r = camera.get_ray(u, v);
-					pixel_color += ray_color(r, world, MAX_DEPTH) ;
+					pixel_color += ray_color(r, background, world, MAX_DEPTH) ;
 				}
 				write_color(image, pixel_color, SAMPLES_PER_PIXEL);
 			}

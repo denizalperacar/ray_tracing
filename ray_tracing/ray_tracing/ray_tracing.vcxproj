@@ -27,6 +27,7 @@
     <ClInclude Include="random.h" />
     <ClInclude Include="ray.h" />
     <ClInclude Include="ray_color.h" />
+    <ClInclude Include="rectangle.h" />
     <ClInclude Include="rendering.h" />
     <ClInclude Include="simple_shapes.h" />
     <ClInclude Include="sphere.h" />
@@ -41,6 +42,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="moving_sphere.cpp" />
     <ClCompile Include="ray_color.cpp" />
+    <ClCompile Include="rectangle.cpp" />
     <ClCompile Include="rendering.cpp" />
     <ClCompile Include="simple_shapes.cpp" />
     <ClCompile Include="sphere.cpp" />
