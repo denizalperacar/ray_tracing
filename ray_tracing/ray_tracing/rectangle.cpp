@@ -28,7 +28,7 @@ bool xy_rect::hit(const rayf& r, float t_min, float t_max, hit_record& rec) cons
 
 bool xz_rect::hit(const rayf& r, float t_min, float t_max, hit_record& rec) const {
 
-	float t = (k - r.origin().z()) / r.direction().z();
+	float t = (k - r.origin().y()) / r.direction().y();
 
 	if (t < t_min || t > t_max) {
 		return false;
@@ -55,7 +55,7 @@ bool xz_rect::hit(const rayf& r, float t_min, float t_max, hit_record& rec) cons
 
 bool yz_rect::hit(const rayf& r, float t_min, float t_max, hit_record& rec) const {
 
-	float t = (k - r.origin().z()) / r.direction().z();
+	float t = (k - r.origin().x()) / r.direction().x();
 
 	if (t < t_min || t > t_max) {
 		return false;
