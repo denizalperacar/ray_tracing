@@ -29,4 +29,22 @@ public:
 };
 
 
+class translate : public hittable {
+public:
+
+	translate(shared_ptr<hittable> p, const vec3f& dispalcement) 
+		: ptr(p), offset(dispalcement) {}
+
+	virtual bool hit(
+		const rayf& r, float t_min, float t_max, hit_record& rec) const override;
+
+	virtual bool bounding_box(float time0, float time1, aabb& output_box) const override;
+
+public:
+	shared_ptr<hittable> ptr;
+	vec3f offset;
+};
+
+
+
 #endif

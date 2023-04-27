@@ -4,6 +4,7 @@
 #include "moving_sphere.h"
 #include "image_texture.h"
 #include "rectangle.h"
+#include "box.h"
 
 
 hittable_list random_scene(int n = 11) {
@@ -125,5 +126,7 @@ hittable_list cornell_box() {
   objects.add(make_shared<xz_rect>(0.f, 555.f, 0.f, 555.f, 555.f, white));
   objects.add(make_shared<xy_rect>(0.f, 555.f, 0.f, 555.f, 555.f, white));
 
+  objects.add(make_shared<box>(point3f(130.f, 0.f, 65.f), point3f(295.f, 165.f, 230.f), white));
+  objects.add(make_shared<box>(point3f(265.f, 0.f, 295.f), point3f(430.f, 330.f, 460.f), white));
   return objects;
 }

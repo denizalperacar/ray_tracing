@@ -40,6 +40,9 @@
     <Filter Include="shapes\rectangle">
       <UniqueIdentifier>{15b32617-bfe0-4cc3-9fa1-26af9f26d0a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shapes\instance_manipulations">
+      <UniqueIdentifier>{113100e5-9592-4e13-8abc-0528d24db06d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -111,6 +114,9 @@
     <ClInclude Include="rectangle.h">
       <Filter>shapes\rectangle</Filter>
     </ClInclude>
+    <ClInclude Include="box.h">
+      <Filter>shapes\rectangle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">
@@ -140,6 +146,12 @@
     </ClCompile>
     <ClCompile Include="rectangle.cpp">
       <Filter>shapes\rectangle</Filter>
+    </ClCompile>
+    <ClCompile Include="box.cpp">
+      <Filter>shapes\rectangle</Filter>
+    </ClCompile>
+    <ClCompile Include="instance_translation.cpp">
+      <Filter>shapes\instance_manipulations</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
