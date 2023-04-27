@@ -45,6 +45,25 @@ public:
 	vec3f offset;
 };
 
+class rotate_y : public hittable {
+public:
+	rotate_y(shared_ptr<hittable> p, float angle);
+	virtual bool hit(
+		const rayf& r, float time0, float time1, hit_record& rec) const override;
+
+	virtual bool bounding_box(float time0, float time1, aabb& output_box) const override {
+		output_box = bbox;
+		return has_box;
+	}
+
+public:
+	shared_ptr<hittable> ptr;
+	float sin_theta;
+	float cos_theta;
+	bool has_box;
+	aabb bbox;
+};
+
 
 
 #endif

@@ -153,5 +153,17 @@
     <ClCompile Include="instance_translation.cpp">
       <Filter>shapes\instance_manipulations</Filter>
     </ClCompile>
+    <ClCompile Include="instance_rotations.cpp">
+      <Filter>shapes\instance_manipulations</Filter>
+    </ClCompile>
+    <ClCompile Include="cornel_box.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="texture_scenes.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
+    <ClCompile Include="light_scenes.cpp">
+      <Filter>scene</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -39,9 +39,12 @@
   <ItemGroup>
     <ClCompile Include="box.cpp" />
     <ClCompile Include="bvh.cpp" />
+    <ClCompile Include="cornel_box.cpp" />
     <ClCompile Include="default_scene_generator.cpp" />
     <ClCompile Include="hittable_list.cpp" />
+    <ClCompile Include="instance_rotations.cpp" />
     <ClCompile Include="instance_translation.cpp" />
+    <ClCompile Include="light_scenes.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="moving_sphere.cpp" />
     <ClCompile Include="ray_color.cpp" />
@@ -49,6 +52,7 @@
     <ClCompile Include="rendering.cpp" />
     <ClCompile Include="simple_shapes.cpp" />
     <ClCompile Include="sphere.cpp" />
+    <ClCompile Include="texture_scenes.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{DBFAFB1A-A87A-4856-B10A-49719D608B24}</ProjectGuid>
