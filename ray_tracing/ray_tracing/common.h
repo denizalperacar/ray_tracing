@@ -14,11 +14,12 @@ using std::sqrtf;
 using std::sqrt;
 
 
-constexpr float IMAGE_ASPECT_RATIO = 16.0f / 9.0f;
-constexpr int IMAGE_WIDTH = 600;
+constexpr float IMAGE_ASPECT_RATIO = 1.0f; // 16.0f / 9.0f;
+constexpr int IMAGE_WIDTH = 400;
 constexpr int IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / IMAGE_ASPECT_RATIO);
-constexpr int SAMPLES_PER_PIXEL = 400;
+constexpr int SAMPLES_PER_PIXEL = 200;
 constexpr int MAX_DEPTH = 50;
+constexpr int NUMTHREADS = 4;
 
 // constants
 const float infinityf = std::numeric_limits<float>::infinity();

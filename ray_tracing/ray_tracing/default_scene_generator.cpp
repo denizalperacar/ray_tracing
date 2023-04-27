@@ -108,3 +108,22 @@ hittable_list simple_light() {
 
   return objects;
 }
+
+
+hittable_list cornell_box() {
+  hittable_list objects;
+
+  auto red = make_shared<lambertian>(color3f(.65f, .05f, .05f));
+  auto white = make_shared<lambertian>(color3f(.73f, .73f, .73f));
+  auto green = make_shared<lambertian>(color3f(.12f, .45f, .15f));
+  auto light = make_shared<diffuse_light>(color3f(15.f, 15.f, 15.f));
+
+  objects.add(make_shared<yz_rect>(0.f, 555.f, 0.f, 555.f, 555.f, green));
+  objects.add(make_shared<yz_rect>(0.f, 555.f, 0.f, 555.f, 0.f, red));
+  objects.add(make_shared<xz_rect>(213.f, 343.f, 227.f, 332.f, 554.f, light));
+  objects.add(make_shared<xz_rect>(0.f, 555.f, 0.f, 555.f, 0.f, white));
+  objects.add(make_shared<xz_rect>(0.f, 555.f, 0.f, 555.f, 555.f, white));
+  objects.add(make_shared<xy_rect>(0.f, 555.f, 0.f, 555.f, 555.f, white));
+
+  return objects;
+}

@@ -9,6 +9,8 @@
 
 void generate_default_image(std::string file_name);
 void generate_image(std::string file_name, camera const& camera, const hittable& world, const color3f& background);
+void generate_image_parallel_for(std::string file_name, camera const& camera, const hittable& world, const color3f& background);
+
 
 
 

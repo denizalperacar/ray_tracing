@@ -5,6 +5,8 @@
 #include "rectangle.h"
 #include <string>
 
+#include <chrono>
+
 
 int main() {
 
@@ -43,6 +45,7 @@ int main() {
     vfov = 20.0f;
     break;
 
+  
   case 4:
     world = earth();
     background = color3f(0.70f, 0.80f, 1.00f);
@@ -51,7 +54,7 @@ int main() {
     vfov = 20.0f;
     break;
 
-  default:
+
   case 5:
     world = simple_light();
     background = color3f(0.f, 0.f, 0.f);
@@ -59,6 +62,17 @@ int main() {
     lookat = point3f(0.f, 2.f, 0.f);
     vfov = 20.0f;
     break;
+
+  default:
+  case 6:
+    world = cornell_box();
+    background = color3f(0.f, 0.f, 0.f);
+    lookfrom = point3f(278.f, 278.f, -800.f);
+    lookat = point3f(278.f, 278.f, 0.f);
+    vfov = 40.0f;
+    break;
+
+
   }
 
   // Camera
@@ -68,7 +82,12 @@ int main() {
   int image_height = static_cast<int>(IMAGE_WIDTH / IMAGE_ASPECT_RATIO);
 
 	camera cam(lookfrom, lookat, up, vfov, IMAGE_ASPECT_RATIO, aperture, dist_to_focus, 0.f, 1.0f);
-	generate_image("../image.ppm", cam, world, background);
-
+  auto start = std::chrono::high_resolution_clock::now();
+  //generate_image("../image.ppm", cam, world, background);
+  //auto stop1 = std::chrono::high_resolution_clock::now();
+  generate_image_parallel_for("../image.ppm", cam, world, background);
+  auto stop2 = std::chrono::high_resolution_clock::now();
+  //std::cerr << std::chrono::duration_cast<std::chrono::microseconds>(stop1 - start).count() << "\n";
+  std::cerr << static_cast<float>(std::chrono::duration_cast<std::chrono::microseconds>(stop2 - start).count()) / 1000000.f << "\n";
 	return 0;
 }
