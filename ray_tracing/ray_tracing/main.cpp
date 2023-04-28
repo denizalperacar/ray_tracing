@@ -63,7 +63,6 @@ int main() {
     vfov = 20.0f;
     break;
 
-  default:
   case 6:
     world = cornell_box();
     background = color3f(0.f, 0.f, 0.f);
@@ -72,6 +71,14 @@ int main() {
     vfov = 40.0f;
     break;
 
+  default:
+  case 7:
+    world = book_2_final_scene();
+    background = color3f(0.f, 0.f, 0.f);
+    lookfrom = point3f(478.f, 278.f, -600.f);
+    lookat = point3f(278.f, 278.f, 0.f);
+    vfov = 40.0f;
+    break;
 
   }
 

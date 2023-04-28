@@ -11,5 +11,6 @@ hittable_list two_perlin_spheres();
 hittable_list earth();
 hittable_list simple_light();
 hittable_list cornell_box();
+hittable_list book_2_final_scene();
 
 #endif

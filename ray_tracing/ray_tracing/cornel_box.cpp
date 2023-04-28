@@ -1,6 +1,7 @@
 #include "default_scene_generator.h"
 #include "materials.h"
 #include "box.h"
+#include "constant_medium.h"
 
 
 hittable_list cornell_box() {
@@ -21,11 +22,13 @@ hittable_list cornell_box() {
   shared_ptr<hittable> box1 = make_shared<box>(point3f(0.f, 0.f, 0.f), point3f(165.f, 330.f, 165.f), white);
   box1 = make_shared<rotate_y>(box1, 15.f);
   box1 = make_shared<translate>(box1, vec3f(265.f, 0.f, 295.f));
-  objects.add(box1);
 
   shared_ptr<hittable> box2 = make_shared<box>(point3f(0.f, 0.f, 0.f), point3f(165.f, 165.f, 165.f), white);
   box2 = make_shared<rotate_y>(box2, -18.f);
   box2 = make_shared<translate>(box2, vec3f(130.f, 0.f, 65.f));
-  objects.add(box2);
+
+  objects.add(make_shared<constant_medium>(box1, 0.01f, color3f(0.f, 0.f, 0.f)));
+  objects.add(make_shared<constant_medium>(box2, 0.01f, color3f(1.f, 1.f, 1.f)));
+
   return objects;
 }

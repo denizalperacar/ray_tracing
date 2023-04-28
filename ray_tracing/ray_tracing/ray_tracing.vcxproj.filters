@@ -43,6 +43,12 @@
     <Filter Include="shapes\instance_manipulations">
       <UniqueIdentifier>{113100e5-9592-4e13-8abc-0528d24db06d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="scene\private">
+      <UniqueIdentifier>{54c168bd-ec03-4722-be7b-be7614995f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shapes\medium">
+      <UniqueIdentifier>{20415df4-6f4c-4bac-9183-5df56a9e86be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="rendering.h">
@@ -117,6 +123,9 @@
     <ClInclude Include="box.h">
       <Filter>shapes\rectangle</Filter>
     </ClInclude>
+    <ClInclude Include="constant_medium.h">
+      <Filter>shapes\medium</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="rendering.cpp">
@@ -134,9 +143,6 @@
     </ClCompile>
     <ClCompile Include="hittable_list.cpp">
       <Filter>shapes</Filter>
-    </ClCompile>
-    <ClCompile Include="default_scene_generator.cpp">
-      <Filter>scene</Filter>
     </ClCompile>
     <ClCompile Include="moving_sphere.cpp">
       <Filter>shapes\sphere</Filter>
@@ -157,13 +163,22 @@
       <Filter>shapes\instance_manipulations</Filter>
     </ClCompile>
     <ClCompile Include="cornel_box.cpp">
-      <Filter>scene</Filter>
+      <Filter>scene\private</Filter>
     </ClCompile>
-    <ClCompile Include="texture_scenes.cpp">
-      <Filter>scene</Filter>
+    <ClCompile Include="default_scene_generator.cpp">
+      <Filter>scene\private</Filter>
     </ClCompile>
     <ClCompile Include="light_scenes.cpp">
-      <Filter>scene</Filter>
+      <Filter>scene\private</Filter>
+    </ClCompile>
+    <ClCompile Include="texture_scenes.cpp">
+      <Filter>scene\private</Filter>
+    </ClCompile>
+    <ClCompile Include="constant_medium.cpp">
+      <Filter>shapes\medium</Filter>
+    </ClCompile>
+    <ClCompile Include="book2_final_case.cpp">
+      <Filter>scene\private</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

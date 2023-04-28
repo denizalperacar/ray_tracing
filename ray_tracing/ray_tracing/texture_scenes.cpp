@@ -1,7 +1,7 @@
 #include "default_scene_generator.h"
 #include "materials.h"
-#include "image_texture.h"
 #include "sphere.h"
+#include "image_texture.h"
 
 hittable_list two_spheres() {
   hittable_list objects;

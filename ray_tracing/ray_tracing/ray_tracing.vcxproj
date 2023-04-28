@@ -17,6 +17,7 @@
     <ClInclude Include="camera.h" />
     <ClInclude Include="color.h" />
     <ClInclude Include="common.h" />
+    <ClInclude Include="constant_medium.h" />
     <ClInclude Include="default_scene_generator.h" />
     <ClInclude Include="hittable.h" />
     <ClInclude Include="hittable_list.h" />
@@ -37,8 +38,10 @@
     <ClInclude Include="vec3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="book2_final_case.cpp" />
     <ClCompile Include="box.cpp" />
     <ClCompile Include="bvh.cpp" />
+    <ClCompile Include="constant_medium.cpp" />
     <ClCompile Include="cornel_box.cpp" />
     <ClCompile Include="default_scene_generator.cpp" />
     <ClCompile Include="hittable_list.cpp" />
