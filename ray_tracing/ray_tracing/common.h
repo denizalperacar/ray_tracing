@@ -15,10 +15,10 @@ using std::sqrt;
 
 
 constexpr float IMAGE_ASPECT_RATIO = 1.0f; // 16.0f / 9.0f;
-constexpr int IMAGE_WIDTH = 800;
+constexpr int IMAGE_WIDTH = 1920;
 constexpr int IMAGE_HEIGHT = static_cast<int>(IMAGE_WIDTH / IMAGE_ASPECT_RATIO);
-constexpr int SAMPLES_PER_PIXEL = 10000;
-constexpr int MAX_DEPTH = 50;
+constexpr int SAMPLES_PER_PIXEL = 100;
+constexpr int MAX_DEPTH = 3;
 constexpr int NUMTHREADS = 4;
 
 // constants

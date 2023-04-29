@@ -48,6 +48,7 @@ void generate_default_image(std::string file_name)
 void generate_image(std::string file_name, camera const& camera, const hittable& world, const color3f& background)
 {
 	std::ofstream image;
+
 	try {
 		image.open(file_name);
 		image << "P3\n" << IMAGE_WIDTH << " " << IMAGE_HEIGHT << "\n255\n";
@@ -119,6 +120,53 @@ void generate_image_parallel_for(std::string file_name, camera const& camera, co
 				write_color(image, pixel_color, SAMPLES_PER_PIXEL);
 			}
 		}
+	}
+	catch (std::exception& e) {
+		std::cout << e.what() << std::endl;
+	}
+	std::cerr << "\nDone.\n";
+}
+
+
+void generate_image_parallel_write_later(std::string file_name, camera const& camera, const hittable& world, const color3f& background)
+{
+	std::ofstream image;
+	try {
+		image.open(file_name);
+		image << "P3\n" << IMAGE_WIDTH << " " << IMAGE_HEIGHT << "\n255\n";
+		std::vector<color3f> pixels;
+		for (int j = IMAGE_HEIGHT - 1; j >= 0; --j) {
+			std::cerr << "\rScanlines remaining: " << j << " " << std::flush;
+			for (int i = 0; i < IMAGE_WIDTH; i++) {
+				std::vector<color3f> results(NUMTHREADS);
+				std::vector<std::thread> threads;
+
+				int chunk_size = SAMPLES_PER_PIXEL / NUMTHREADS;
+				for (int t = 0; t < NUMTHREADS; t++) {
+					int start = t * chunk_size;
+					int end = (t + 1) * chunk_size;
+					results[t] = color3f(0.f, 0.f, 0.f);
+					threads.emplace_back([t, i, j, start, end, &results, &camera, &world, &background]()
+						{ results[t] = trace_ray(i, j, start, end, camera, world, background);  }
+					);
+				}
+
+				// wait for all threads to finish
+				for (int t = 0; t < NUMTHREADS; t++) {
+					threads[t].join();
+				}
+
+				color3f pixel_color{ 0.f,0.f,0.f };
+				for (int t = 0; t < NUMTHREADS; t++) {
+					pixel_color += results[t];
+				}
+
+				pixels.push_back(pixel_color);
+				
+			}
+		}
+
+		write_color(image, pixels, SAMPLES_PER_PIXEL);
 	}
 	catch (std::exception& e) {
 		std::cout << e.what() << std::endl;
