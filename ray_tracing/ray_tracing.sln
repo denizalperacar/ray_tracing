@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ray_tracing", "ray_tracing\ray_tracing.vcxproj", "{DBFAFB1A-A87A-4856-B10A-49719D608B24}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cuda_based_ray_tracing", "cuda_based_ray_tracing\cuda_based_ray_tracing.vcxproj", "{E76864D6-42B9-46B8-B552-5D0A172B19E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,10 @@ Global
 		{DBFAFB1A-A87A-4856-B10A-49719D608B24}.Debug|x64.Build.0 = Debug|x64
 		{DBFAFB1A-A87A-4856-B10A-49719D608B24}.Release|x64.ActiveCfg = Release|x64
 		{DBFAFB1A-A87A-4856-B10A-49719D608B24}.Release|x64.Build.0 = Release|x64
+		{E76864D6-42B9-46B8-B552-5D0A172B19E6}.Debug|x64.ActiveCfg = Debug|x64
+		{E76864D6-42B9-46B8-B552-5D0A172B19E6}.Debug|x64.Build.0 = Debug|x64
+		{E76864D6-42B9-46B8-B552-5D0A172B19E6}.Release|x64.ActiveCfg = Release|x64
+		{E76864D6-42B9-46B8-B552-5D0A172B19E6}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
