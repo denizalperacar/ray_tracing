@@ -21,6 +21,12 @@
 #include <fstream>
 #include <limits>
 #include <chrono>
+#include <atomic>
+#include <unordered_map>
+#include <atomic>
+#include <stdexcept>
+
+
 
 #include <cuda_runtime.h>
 #include <device_launch_parameters.h>
