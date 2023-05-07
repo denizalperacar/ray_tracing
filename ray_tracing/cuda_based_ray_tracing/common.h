@@ -25,7 +25,7 @@
 #include <unordered_map>
 #include <atomic>
 #include <stdexcept>
-
+#include <string>
 
 
 #include <cuda_runtime.h>

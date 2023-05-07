@@ -45,7 +45,7 @@ CBRT_BEGIN
 // aliases
 #define CBRT_HTD cudaMemcpyHostToDevice
 #define CBRT_DTH cudaMemcpyDeviceToHost
-
+#define CBRT_DTD cudaMemcpyDeviceToDevice
 
 CBRT_END
 
