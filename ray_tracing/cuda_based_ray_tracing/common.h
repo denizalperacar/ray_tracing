@@ -26,6 +26,7 @@
 #include <atomic>
 #include <stdexcept>
 #include <string>
+#include <functional>
 
 
 #include <cuda_runtime.h>

@@ -1,4 +1,7 @@
 #include "common.h"
+#include "toojpeg.h"
+
+
 
 class color {
 public:
@@ -25,7 +28,12 @@ public:
 };
 
 std::ostream& operator<<(std::ostream& os, color obj) {
-	os << obj.r << " " << obj.g << " " << obj.b << "\n";
+	os << +obj.r << " " << +obj.g << " " << +obj.b << "\n";
+	return os;
+}
+
+std::fstream& operator<<(std::fstream& os, color obj) {
+	os << +obj.r << " " << +obj.g << " " << +obj.b << "\n";
 	return os;
 }
 
@@ -47,15 +55,43 @@ CBRT_KERNEL void render(color* result) {
 		c.b = (uint8_t)(255.999 * b);
 
 		result[idx] = c;
+		//c.print();
 	}
+}
+
+class image {
+
+public:
+	image(std::string name) {
+		file.open(name, std::ios_base::out | std::ios_base::binary);
+	}
+
+	~image() {
+		file.close();
+	}
+
+	void getWriter(unsigned char c) {
+		file << c;
+	}
+
+private:
+	std::ofstream file;
+};
+
+
+// output file
+std::ofstream myFile("example.jpg", std::ios_base::out | std::ios_base::binary);
+
+// write a single byte compressed by tooJpeg
+void image_output(unsigned char byte)
+{
+	myFile << byte;
 }
 
 int main() {
 
-
-
 	color* device_ptr;
-	color host_data [DEFAULT_NUMBER_OF_PIXELS];
+	color* host_ptr = (color*)malloc(DEFAULT_IMAGE_WIDTH * DEFAULT_IMAGE_HEIGHT * sizeof(color));
 
 
 	size_t size = DEFAULT_IMAGE_WIDTH * DEFAULT_IMAGE_HEIGHT * sizeof(color);
@@ -65,13 +101,14 @@ int main() {
 	dim3 block(NUM_THREADS_MIN, NUM_THREADS_MIN);
 	render << < grid, block  >> > (device_ptr);
 
-	cudaMemcpy(host_data, device_ptr, size, CBRT_DTH);
+	cudaMemcpy(host_ptr, device_ptr, size, cudaMemcpyDeviceToHost);
 
-	for (size_t i = 0; i < DEFAULT_NUMBER_OF_PIXELS; i++) {
-		std::cout << host_data[i] << "\n";
-	}
+	void (image:: * pf)(unsigned char c) = &image::getWriter;
+	auto ok = TooJpeg::writeJpeg(image_output, host_ptr, DEFAULT_IMAGE_WIDTH, DEFAULT_IMAGE_HEIGHT, true, 90, false);
+
 
 	cudaFree(device_ptr);
+	delete [] host_ptr;
 	return 0;
 }
 

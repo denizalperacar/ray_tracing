@@ -47,6 +47,8 @@ CBRT_BEGIN
 #define CBRT_DTH cudaMemcpyDeviceToHost
 #define CBRT_DTD cudaMemcpyDeviceToDevice
 
+typedef void (*writeOneByte)(unsigned char);
+
 CBRT_END
 
 #endif

@@ -7,6 +7,9 @@
     <Filter Include="memory">
       <UniqueIdentifier>{b0f7c0b2-d629-415c-a5c3-8a280a5fad4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="tojpeg">
+      <UniqueIdentifier>{2aaad98d-a075-4993-b5e7-837f52d331ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="namespaces.h">
@@ -21,11 +24,19 @@
     <ClInclude Include="device_memory.h">
       <Filter>memory</Filter>
     </ClInclude>
+    <ClInclude Include="toojpeg.h">
+      <Filter>tojpeg</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.md" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="main.cu" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="toojpeg.cpp">
+      <Filter>tojpeg</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
