@@ -234,7 +234,7 @@ public:
 		return copy(m_size);
 	}
 
-	CBRT_HOST_DEVICE T& operator[](size_t idx) const {
+	CBRT_HOST_DEVICE U& operator[](size_t idx) const {
 		if (idx > m_size) {
 			printf("WARNING: buffer overrun of %p at idx %zu\n", idx);
 		}
@@ -242,7 +242,7 @@ public:
 		return device_ptr[idx];
 	}
 
-	CBRT_HOST_DEVICE T& operator[](uint32_t idx) const {
+	CBRT_HOST_DEVICE U& operator[](uint32_t idx) const {
 		if (idx > m_size) {
 			printf("WARNING: buffer overrun of %p at idx %u\n", idx);
 		}
