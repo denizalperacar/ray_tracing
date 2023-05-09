@@ -185,12 +185,12 @@ public:
 		if (num_elements > m_size) {
 			throw std::runtime_error{ "Trying to copy " + std::to_string(num_elements) + ", but vector m_size is only " + std::to_string(m_size) + "." };
 		}
-		cudaMemcpy(host_data, data(), num_elements * sizeof(U), CBRT_DTH);
+		cudaMemcpy(host_data, device_ptr, num_elements * sizeof(U), CBRT_DTH);
 	}
 
 	void copy_to_host(std::vector<U>& data, const size_t num_elements) const {
-		if (data.m_size() < num_elements) {
-			throw std::runtime_error{"Trying to copy " + std::to_string(num_elements) + " elements, but vector m_size is only " + std::to_string(data.m_size())};
+		if (data.size() < num_elements) {
+			throw std::runtime_error{"Trying to copy " + std::to_string(num_elements) + " elements, but vector m_size is only " + std::to_string(data.size())};
 		}
 		copy_to_host(data.data(), num_elements);
 	}
@@ -200,8 +200,8 @@ public:
 	}
 
 	void copy_to_host(std::vector<U>& data) const {
-		if (data.m_size() < m_size) {
-			throw std::runtime_error{ "Trying to copy " + std::to_string(m_size) + " elements, but vector m_size is only " + std::to_string(data.m_size()) };
+		if (data.size() < m_size) {
+			throw std::runtime_error{ "Trying to copy " + std::to_string(m_size) + " elements, but vector m_size is only " + std::to_string(data.size()) };
 		}
 
 		copy_to_host(data.data(), m_size);

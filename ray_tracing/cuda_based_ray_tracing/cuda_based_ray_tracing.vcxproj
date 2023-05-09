@@ -81,7 +81,11 @@
     <ClInclude Include="device_memory.h" />
     <ClInclude Include="helper.h" />
     <ClInclude Include="namespaces.h" />
+    <ClInclude Include="random.h" />
+    <ClInclude Include="rendering.cuh" />
     <ClInclude Include="toojpeg.h" />
+    <ClInclude Include="vector.h" />
+    <ClInclude Include="get_color.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="readme.md" />

@@ -34,6 +34,7 @@
 #include <cuda.h>
 
 #include "helper.h"
+#include "vector.h"
 
 // common methods and data structures
 
@@ -54,6 +55,52 @@ constexpr uint32_t  NUM_THREADS_MAX = 1024;
 
 constexpr float pi = 3.1415926535897932385f;
 
+
+typedef void (*writeOneByte)(unsigned char);
+
+// output file
+std::ofstream myFile("../result.jpg", std::ios_base::out | std::ios_base::binary);
+
+// write a single byte compressed by tooJpeg
+void image_output(unsigned char byte)
+{
+	myFile << byte;
+}
+
+
+class render_color {
+public:
+
+	CBRT_HOST_DEVICE render_color() : r(0), g(0), b(0) {}
+
+	CBRT_HOST_DEVICE render_color(uint8_t red, uint8_t green, uint8_t blue)
+		: r(red), g(green), b(blue) {}
+
+	CBRT_HOST std::ofstream& draw(std::ofstream& os) {
+		os << r << " " << g << " " << b << "\n";
+		return os;
+	}
+
+	CBRT_HOST_DEVICE void print() {
+		printf("%d %d %d\n", r, g, b);
+	}
+
+public:
+	uint8_t r;
+	uint8_t g;
+	uint8_t b;
+
+};
+
+std::ostream& operator<<(std::ostream& os, render_color obj) {
+	os << +obj.r << " " << +obj.g << " " << +obj.b << "\n";
+	return os;
+}
+
+std::fstream& operator<<(std::fstream& os, render_color obj) {
+	os << +obj.r << " " << +obj.g << " " << +obj.b << "\n";
+	return os;
+}
 
 
 

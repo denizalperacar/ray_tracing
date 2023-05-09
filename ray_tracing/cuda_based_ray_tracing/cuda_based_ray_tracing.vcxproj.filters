@@ -10,6 +10,12 @@
     <Filter Include="tojpeg">
       <UniqueIdentifier>{2aaad98d-a075-4993-b5e7-837f52d331ab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="rendering">
+      <UniqueIdentifier>{4edbe2db-6fcf-4bd1-af8c-4121a93a50fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vector">
+      <UniqueIdentifier>{696c8353-8683-49e8-9ce8-035a954a5909}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="namespaces.h">
@@ -26,6 +32,18 @@
     </ClInclude>
     <ClInclude Include="toojpeg.h">
       <Filter>tojpeg</Filter>
+    </ClInclude>
+    <ClInclude Include="rendering.cuh">
+      <Filter>rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="random.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="vector.h">
+      <Filter>vector</Filter>
+    </ClInclude>
+    <ClInclude Include="get_color.h">
+      <Filter>vector</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

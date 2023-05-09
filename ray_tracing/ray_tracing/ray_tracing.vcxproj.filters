@@ -34,9 +34,6 @@
     <Filter Include="texture">
       <UniqueIdentifier>{ede17e26-8118-4c68-a321-1bc4cd1d2875}</UniqueIdentifier>
     </Filter>
-    <Filter Include="dependencies">
-      <UniqueIdentifier>{47daeb0f-56ed-4c9d-b0a5-ad1efdf09532}</UniqueIdentifier>
-    </Filter>
     <Filter Include="shapes\rectangle">
       <UniqueIdentifier>{15b32617-bfe0-4cc3-9fa1-26af9f26d0a7}</UniqueIdentifier>
     </Filter>
@@ -48,6 +45,9 @@
     </Filter>
     <Filter Include="shapes\medium">
       <UniqueIdentifier>{20415df4-6f4c-4bac-9183-5df56a9e86be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common\dependencies">
+      <UniqueIdentifier>{47daeb0f-56ed-4c9d-b0a5-ad1efdf09532}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -112,7 +112,7 @@
       <Filter>texture</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
-      <Filter>dependencies</Filter>
+      <Filter>common\dependencies</Filter>
     </ClInclude>
     <ClInclude Include="load_images.h">
       <Filter>common</Filter>
