@@ -85,6 +85,7 @@
     <ClInclude Include="ray.h" />
     <ClInclude Include="ray_color.h" />
     <ClInclude Include="rendering.cuh" />
+    <ClInclude Include="sphere.h" />
     <ClInclude Include="toojpeg.h" />
     <ClInclude Include="vector.h" />
     <ClInclude Include="get_color.h" />

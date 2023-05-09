@@ -19,6 +19,12 @@
     <Filter Include="ray">
       <UniqueIdentifier>{41e42891-5f5a-4b2e-a666-2e6f00bfc3d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shapes">
+      <UniqueIdentifier>{6ae2bc96-5908-471b-a81a-da291193a062}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shapes\sphere">
+      <UniqueIdentifier>{e9edd393-d872-4847-99f8-4d536546e9c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="namespaces.h">
@@ -53,6 +59,9 @@
     </ClInclude>
     <ClInclude Include="ray_color.h">
       <Filter>ray</Filter>
+    </ClInclude>
+    <ClInclude Include="sphere.h">
+      <Filter>shapes\sphere</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

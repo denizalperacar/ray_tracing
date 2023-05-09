@@ -44,7 +44,10 @@ void render() {
 	size_t size = DEFAULT_IMAGE_WIDTH * DEFAULT_IMAGE_HEIGHT * sizeof(render_color);
 	CBRT::DeviceMemory<render_color> device_ptr(DEFAULT_IMAGE_WIDTH * DEFAULT_IMAGE_HEIGHT);
 	device_ptr.allocate_memory(size);
-	dim3 grid(DEFAULT_IMAGE_WIDTH / NUM_THREADS_MIN, DEFAULT_IMAGE_HEIGHT / NUM_THREADS_MIN);
+	dim3 grid(
+		(uint32_t)ceil((float)DEFAULT_IMAGE_WIDTH / NUM_THREADS_MIN), 
+		(uint32_t)ceil((float)DEFAULT_IMAGE_HEIGHT / NUM_THREADS_MIN)
+	);
 	dim3 block(NUM_THREADS_MIN, NUM_THREADS_MIN);
 	render << < grid, block >> > (device_ptr.data());
 	std::vector<render_color> host_ptr(DEFAULT_IMAGE_WIDTH * DEFAULT_IMAGE_HEIGHT);
