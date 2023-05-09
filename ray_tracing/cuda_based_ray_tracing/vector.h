@@ -18,9 +18,7 @@ template <typename T>
 class vec3 {
 
 public:
-	CBRT_HOST_DEVICE vec3() {
-			e = { (T) 0., (T) 0., (T) 0. };
-	}
+	CBRT_HOST_DEVICE vec3() : e{ (T)0., (T)0., (T)0. } { }
 
 	CBRT_HOST_DEVICE explicit vec3(T e1, T e2, T e3) : e{ e1, e2, e3 } {}
 

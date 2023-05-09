@@ -35,6 +35,7 @@
 
 #include "helper.h"
 #include "vector.h"
+#include "ray.h"
 
 // common methods and data structures
 

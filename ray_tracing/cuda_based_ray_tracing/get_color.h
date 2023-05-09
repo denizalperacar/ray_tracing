@@ -1,4 +1,6 @@
-#pragma once
+#ifndef CUDA_BASED_RAY_TRACING_VECTOR_GET_COLOR_H_
+#define CUDA_BASED_RAY_TRACING_VECTOR_GET_COLOR_H_
+
 #include "common.h"
 
 CBRT_BEGIN
@@ -27,3 +29,5 @@ CBRT_HOST_DEVICE render_color get_color(color3f& pixel_color, int samples_per_pi
 
 
 CBRT_END
+
+#endif

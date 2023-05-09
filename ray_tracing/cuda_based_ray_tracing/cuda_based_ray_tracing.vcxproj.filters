@@ -16,6 +16,9 @@
     <Filter Include="vector">
       <UniqueIdentifier>{696c8353-8683-49e8-9ce8-035a954a5909}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ray">
+      <UniqueIdentifier>{41e42891-5f5a-4b2e-a666-2e6f00bfc3d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="namespaces.h">
@@ -44,6 +47,12 @@
     </ClInclude>
     <ClInclude Include="get_color.h">
       <Filter>vector</Filter>
+    </ClInclude>
+    <ClInclude Include="ray.h">
+      <Filter>ray</Filter>
+    </ClInclude>
+    <ClInclude Include="ray_color.h">
+      <Filter>ray</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

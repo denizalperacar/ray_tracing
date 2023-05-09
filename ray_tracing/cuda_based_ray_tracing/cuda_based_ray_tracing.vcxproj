@@ -82,6 +82,8 @@
     <ClInclude Include="helper.h" />
     <ClInclude Include="namespaces.h" />
     <ClInclude Include="random.h" />
+    <ClInclude Include="ray.h" />
+    <ClInclude Include="ray_color.h" />
     <ClInclude Include="rendering.cuh" />
     <ClInclude Include="toojpeg.h" />
     <ClInclude Include="vector.h" />
