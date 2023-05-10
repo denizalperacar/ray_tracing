@@ -65,7 +65,8 @@ void render() {
 	);
 	dim3 block(NUM_THREADS_MIN, NUM_THREADS_MIN);
 
-	render << < grid, block >> > (device_ptr.data(), world.data());
+	/*
+	render << < grid, block >> > (device_ptr.data(), *world.data());
 	std::vector<render_color> host_ptr(DEFAULT_IMAGE_WIDTH * DEFAULT_IMAGE_HEIGHT);
 	device_ptr.copy_to_host(host_ptr);
 
@@ -82,6 +83,7 @@ void render() {
 	std::cout << "Time taken to render the image: " 
 		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() 
 		<< " ms" << std::endl;
+	*/
 }
 
 CBRT_END
