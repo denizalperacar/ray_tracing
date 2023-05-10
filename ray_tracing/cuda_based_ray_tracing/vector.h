@@ -85,54 +85,54 @@ template <typename T> using point = vec3<T>;
 
 // vec3 utility functions for float
 
-CBRT_HOST inline std::ostream& operator<<(std::ostream& out, const vec3f& v) {
+CBRT_HOST CBRT_INLINE std::ostream& operator<<(std::ostream& out, const vec3f& v) {
 	return out << v.e[0] << ' ' << v.e[1] << ' ' << v.e[2];
 }
 
-CBRT_HOST_DEVICE inline vec3f operator+(const vec3f& u, const vec3f& v) {
+CBRT_HOST_DEVICE CBRT_INLINE vec3f operator+(const vec3f& u, const vec3f& v) {
 	return vec3f(u.e[0] + v.e[0], u.e[1] + v.e[1], u.e[2] + v.e[2]);
 }
 
-CBRT_HOST_DEVICE inline vec3f operator-(const vec3f& u, const vec3f& v) {
+CBRT_HOST_DEVICE CBRT_INLINE vec3f operator-(const vec3f& u, const vec3f& v) {
 	return vec3f(u.e[0] - v.e[0], u.e[1] - v.e[1], u.e[2] - v.e[2]);
 }
 
-CBRT_HOST_DEVICE inline vec3f operator*(const vec3f& u, const vec3f& v) {
+CBRT_HOST_DEVICE CBRT_INLINE vec3f operator*(const vec3f& u, const vec3f& v) {
 	return vec3f(u.e[0] * v.e[0], u.e[1] * v.e[1], u.e[2] * v.e[2]);
 }
 
-CBRT_HOST_DEVICE inline vec3f operator*(float t, const vec3f& v) {
+CBRT_HOST_DEVICE CBRT_INLINE vec3f operator*(float t, const vec3f& v) {
 	return vec3f(t * v.e[0], t * v.e[1], t * v.e[2]);
 }
 
-CBRT_HOST_DEVICE inline vec3f operator*(const vec3f& v, float t) {
+CBRT_HOST_DEVICE CBRT_INLINE vec3f operator*(const vec3f& v, float t) {
 	return t * v;
 }
 
-CBRT_HOST_DEVICE inline vec3f operator/(vec3f v, float t) {
+CBRT_HOST_DEVICE CBRT_INLINE vec3f operator/(vec3f v, float t) {
 	return (1 / t) * v;
 }
 
-CBRT_HOST_DEVICE inline float dot(const vec3f& u, const vec3f& v) {
+CBRT_HOST_DEVICE CBRT_INLINE float dot(const vec3f& u, const vec3f& v) {
 	return u.e[0] * v.e[0]
 		+ u.e[1] * v.e[1]
 		+ u.e[2] * v.e[2];
 }
 
-CBRT_HOST_DEVICE inline vec3f cross(const vec3f& u, const vec3f& v) {
+CBRT_HOST_DEVICE CBRT_INLINE vec3f cross(const vec3f& u, const vec3f& v) {
 	return vec3f(u.e[1] * v.e[2] - u.e[2] * v.e[1],
 		u.e[2] * v.e[0] - u.e[0] * v.e[2],
 		u.e[0] * v.e[1] - u.e[1] * v.e[0]);
 }
 
-CBRT_HOST_DEVICE inline vec3f unit_vector(vec3f v) {
+CBRT_HOST_DEVICE CBRT_INLINE vec3f unit_vector(vec3f v) {
 	return v / v.length();
 }
 
 
 /*
 // random methods
-inline vec3f random_in_unit_sphere_f() {
+CBRT_INLINE vec3f random_in_unit_sphere_f() {
 	while (true) {
 		auto p = vec3f::random(-1.f, 1.f);
 		if (p.length_squared() >= 1.f) continue;
@@ -141,7 +141,7 @@ inline vec3f random_in_unit_sphere_f() {
 }
 
 // random methods
-inline vec3d random_in_unit_sphere_d() {
+CBRT_INLINE vec3d random_in_unit_sphere_d() {
 	while (true) {
 		auto p = vec3d::random(-1., 1.);
 		if (p.length_squared() >= 1.) continue;
@@ -149,16 +149,16 @@ inline vec3d random_in_unit_sphere_d() {
 	}
 }
 
-inline vec3f random_unit_vector_on_sphere_f() {
+CBRT_INLINE vec3f random_unit_vector_on_sphere_f() {
 	return unit_vector(random_in_unit_sphere_f());
 }
 
-inline vec3d random_unit_vector_on_sphere_d() {
+CBRT_INLINE vec3d random_unit_vector_on_sphere_d() {
 	return unit_vector(random_in_unit_sphere_d());
 }
 
 
-inline vec3f random_in_hemisphere(const vec3f& normal) {
+CBRT_INLINE vec3f random_in_hemisphere(const vec3f& normal) {
 	vec3f in_unit_sphere = random_in_unit_sphere_f();
 	if (dot(in_unit_sphere, normal) > 0.0) // In the same hemisphere as the normal
 		return in_unit_sphere;
@@ -167,16 +167,16 @@ inline vec3f random_in_hemisphere(const vec3f& normal) {
 }
 
 
-inline vec3f reflect(const vec3f& v, const vec3f& n) {
+CBRT_INLINE vec3f reflect(const vec3f& v, const vec3f& n) {
 	return v - 2.0f * dot(v, n) * n;
 }
 
-inline vec3d reflect(const vec3d& v, const vec3d& n) {
+CBRT_INLINE vec3d reflect(const vec3d& v, const vec3d& n) {
 	return v - 2.0 * dot(v, n) * n;
 }
 
 
-inline vec3f refract(const vec3f& uv, const vec3f& n, float etai_over_etae) {
+CBRT_INLINE vec3f refract(const vec3f& uv, const vec3f& n, float etai_over_etae) {
 	auto cos_theta = fminf(dot(-uv, n), 1.0f);
 	vec3f r_out_prependicular = etai_over_etae * (uv + cos_theta * n);
 	vec3f r_out_parallel = -sqrtf(fabsf(1.0f - r_out_prependicular.length_squared())) * n;
@@ -184,7 +184,7 @@ inline vec3f refract(const vec3f& uv, const vec3f& n, float etai_over_etae) {
 
 }
 
-inline vec3f random_in_unit_disk() {
+CBRT_INLINE vec3f random_in_unit_disk() {
 	while (true) {
 		auto p = vec3f(random_float(-1.f, 1.f), random_float(-1.f, 1.f), 0);
 		if (p.length_squared() >= 1) continue;
@@ -192,11 +192,11 @@ inline vec3f random_in_unit_disk() {
 	}
 }
 
-	CBRT_HOST_DEVICE inline static vec3 random() {
+	CBRT_HOST_DEVICE CBRT_INLINE static vec3 random() {
 		return vec3(random_function<T>(), random_function<T>(), random_function<T>());
 	}
 
-	CBRT_HOST_DEVICE inline static vec3 random(T min, T max) {
+	CBRT_HOST_DEVICE CBRT_INLINE static vec3 random(T min, T max) {
 		return vec3(
 			random_function<T>(min, max),
 			random_function<T>(min, max),

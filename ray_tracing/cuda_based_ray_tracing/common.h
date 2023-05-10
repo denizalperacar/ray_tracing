@@ -55,6 +55,11 @@ constexpr uint32_t  NUM_THREADS_256 = 256;
 constexpr uint32_t  NUM_THREADS_MAX = 1024;
 
 constexpr float pi = 3.1415926535897932385f;
+constexpr float infinity = std::numeric_limits<float>::infinity();
+
+CBRT_HOST_DEVICE CBRT_INLINE float degrees_to_radians(float degrees) {
+	return degrees * pi / 180.0f;
+}
 
 
 typedef void (*writeOneByte)(unsigned char);

@@ -25,6 +25,12 @@
     <Filter Include="shapes\sphere">
       <UniqueIdentifier>{e9edd393-d872-4847-99f8-4d536546e9c8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="shapes\hittable">
+      <UniqueIdentifier>{3128b521-c71f-4e15-b257-c2c7307c028f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="scenes">
+      <UniqueIdentifier>{d4e84ae7-0c9b-463c-b0b4-45f342084472}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="namespaces.h">
@@ -62,6 +68,15 @@
     </ClInclude>
     <ClInclude Include="sphere.h">
       <Filter>shapes\sphere</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable.h">
+      <Filter>shapes\hittable</Filter>
+    </ClInclude>
+    <ClInclude Include="hittable_list.h">
+      <Filter>shapes\hittable</Filter>
+    </ClInclude>
+    <ClInclude Include="two_spheres.h">
+      <Filter>scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

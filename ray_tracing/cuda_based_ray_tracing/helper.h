@@ -20,7 +20,7 @@ CBRT_BEGIN
 #define CBRT_HOST 
 #define CBRT_SHARED 
 #define CBRT_CONST 
-#define CBRT_KERNEL 
+#define CBRT_KERNEL __global__
 
 #endif
 
@@ -38,7 +38,7 @@ CBRT_BEGIN
 #define CBRT_NO_UNROLL 
 #endif
 
-#define CBRT_INLINE __inline__
+#define CBRT_INLINE inline
 #define CBRT_VECTOR
 
 
