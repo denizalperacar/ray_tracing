@@ -13,7 +13,7 @@
 CBRT_BEGIN
 
 // solve this 
-CBRT_KERNEL void render(render_color* result, hittable* world) {
+CBRT_KERNEL void render(render_color* result, hittable** world) {
 	uint32_t i = threadIdx.x + blockDim.x * blockIdx.x;
 	uint32_t j = threadIdx.y + blockDim.y * blockIdx.y;
 	uint32_t idx = j * gridDim.x * blockDim.x + i;
@@ -35,13 +35,13 @@ CBRT_KERNEL void render(render_color* result, hittable* world) {
 		auto u = float(i) / (DEFAULT_IMAGE_WIDTH - 1);
 		auto v = float(j) / (DEFAULT_IMAGE_HEIGHT - 1);
 		ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);
-		color3f pixel_color = ray_color(r, world);
+		color3f pixel_color = ray_color(r, *world);
 		result[idx] = get_color(pixel_color, 1);
 		//c.print();
 	}
 }
 
-void render() {
+void render_manager() {
 
 	std::chrono::steady_clock::time_point begin = std::chrono::steady_clock::now();
 	
@@ -65,8 +65,8 @@ void render() {
 	);
 	dim3 block(NUM_THREADS_MIN, NUM_THREADS_MIN);
 
-	/*
-	render << < grid, block >> > (device_ptr.data(), *world.data());
+	
+	render << < grid, block >> > (device_ptr.data(), world.data());
 	std::vector<render_color> host_ptr(DEFAULT_IMAGE_WIDTH * DEFAULT_IMAGE_HEIGHT);
 	device_ptr.copy_to_host(host_ptr);
 
@@ -83,7 +83,7 @@ void render() {
 	std::cout << "Time taken to render the image: " 
 		<< std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count() 
 		<< " ms" << std::endl;
-	*/
+	
 }
 
 CBRT_END

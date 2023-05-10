@@ -5,7 +5,7 @@
 
 int main() {
 
-	CBRT::render();
+	CBRT::render_manager();
 	return 0;
 }
 
