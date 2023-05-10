@@ -5,4 +5,4 @@ The first part is implemented in C++ while the second part of the project is imp
 
 The current CUDA based generated scene is:
 
-![CUDA SCENE](ray_tracing/ray_tracing/result.jpg?raw=true "CUDA SCENE")
+![CUDA SCENE](ray_tracing/result.jpg?raw=true "CUDA SCENE")
