@@ -33,7 +33,7 @@ CBRT_KERNEL void render(render_color* result, hittable** world) {
 
 		render_color c;
 		auto u = float(i) / (DEFAULT_IMAGE_WIDTH - 1);
-		auto v = float(j) / (DEFAULT_IMAGE_HEIGHT - 1);
+		auto v = float(DEFAULT_IMAGE_HEIGHT - j) / (DEFAULT_IMAGE_HEIGHT - 1);
 		ray r(origin, lower_left_corner + u * horizontal + v * vertical - origin);
 		color3f pixel_color = ray_color(r, *world);
 		result[idx] = get_color(pixel_color, 1);
